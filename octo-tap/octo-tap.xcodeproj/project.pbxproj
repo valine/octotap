@@ -15,6 +15,9 @@
 		80B838B41F1EEEC900F90A13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80B838B21F1EEEC900F90A13 /* LaunchScreen.storyboard */; };
 		80B838BC1F1EEF7500F90A13 /* Octoprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838BB1F1EEF7500F90A13 /* Octoprint.swift */; };
 		80B838E71F1EF4E800F90A13 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B838DC1F1EF4C200F90A13 /* Starscream.framework */; };
+		80B838EA1F1F069F00F90A13 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838E91F1F069F00F90A13 /* SetupViewController.swift */; };
+		80B838EC1F1F08E200F90A13 /* UserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838EB1F1F08E200F90A13 /* UserConstants.swift */; };
+		80B838EE1F1F113E00F90A13 /* StoryboardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838ED1F1F113E00F90A13 /* StoryboardConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		80B838B51F1EEEC900F90A13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80B838BB1F1EEF7500F90A13 /* Octoprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Octoprint.swift; sourceTree = "<group>"; };
 		80B838D21F1EF4C100F90A13 /* Starscream.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Starscream.xcodeproj; path = ../Starscream/Starscream.xcodeproj; sourceTree = "<group>"; };
+		80B838E91F1F069F00F90A13 /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
+		80B838EB1F1F08E200F90A13 /* UserConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConstants.swift; sourceTree = "<group>"; };
+		80B838ED1F1F113E00F90A13 /* StoryboardConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,9 @@
 				80B838A91F1EEEC900F90A13 /* DashboardViewController.swift */,
 				80B838AB1F1EEEC900F90A13 /* FileBrowserViewController.swift */,
 				80B838BB1F1EEF7500F90A13 /* Octoprint.swift */,
+				80B838E91F1F069F00F90A13 /* SetupViewController.swift */,
+				80B838EB1F1F08E200F90A13 /* UserConstants.swift */,
+				80B838ED1F1F113E00F90A13 /* StoryboardConstants.swift */,
 				80B838AD1F1EEEC900F90A13 /* Main.storyboard */,
 				80B838B01F1EEEC900F90A13 /* Assets.xcassets */,
 				80B838B21F1EEEC900F90A13 /* LaunchScreen.storyboard */,
@@ -255,9 +264,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				80B838BC1F1EEF7500F90A13 /* Octoprint.swift in Sources */,
+				80B838EC1F1F08E200F90A13 /* UserConstants.swift in Sources */,
 				80B838AC1F1EEEC900F90A13 /* FileBrowserViewController.swift in Sources */,
 				80B838A81F1EEEC900F90A13 /* AppDelegate.swift in Sources */,
 				80B838AA1F1EEEC900F90A13 /* DashboardViewController.swift in Sources */,
+				80B838EA1F1F069F00F90A13 /* SetupViewController.swift in Sources */,
+				80B838EE1F1F113E00F90A13 /* StoryboardConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

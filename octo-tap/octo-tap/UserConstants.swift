@@ -10,21 +10,30 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import UIKit
+import Foundation
 
-class DashboardViewController: UIViewController {
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
+enum Settings {
+	
+	enum Server : String {
+		case apiKey
+		case address
+	}
+	
+	enum Printer {
+		enum JogDistance {
+			case x
+			case y
+			case z
+		}
 		
+		enum Extruder {
+			case extrusionAmount
+			case flowRate
+		}
 	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
+	
+	enum App : String {
+		case firstLaunch
 	}
-
-
+	
 }
-

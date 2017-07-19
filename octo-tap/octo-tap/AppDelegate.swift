@@ -16,10 +16,21 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-
-
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
+		
+		UserDefaults.standard.register(defaults: [Settings.App.firstLaunch.rawValue : true])
+		let isFirstLaunch = UserDefaults.standard.bool(forKey: Settings.App.firstLaunch.rawValue)
+		
+		//if (isFirstLaunch) {
+			UserDefaults.standard.set(false, forKey: Settings.App.firstLaunch.rawValue)
+			
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let viewController = storyboard.instantiateViewController(withIdentifier: SetupViewController.storyboardIdentifier)
+			self.window?.rootViewController = viewController
+		
+		//}
+		
 		return true
 	}
 
@@ -47,4 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+
 
