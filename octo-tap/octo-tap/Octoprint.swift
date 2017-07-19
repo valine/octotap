@@ -1,24 +1,46 @@
-//	This file is part of Octo Tap.
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
 //
-//	Octo Tap is free software: you can redistribute it and/or modify
-//	it under the terms of the GNU General Public License as published by
-//	the Free Software Foundation, either version 3 of the License, or
-//	(at your option) any later version.
+//  http://www.apache.org/licenses/LICENSE-2.0
 //
-//	Octo Tap is distributed in the hope that it will be useful,
-//	but WITHOUT ANY WARRANTY; without even the implied warranty of
-//	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//	GNU General Public License for more details.
-//
-//	You should have received a copy of the GNU General Public License
-//	along with Octo Tap.  If not, see <http://www.gnu.org/licenses/>.
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 
 import Foundation
 
 // OctoPrint rest api requests are made here
 class Octoprint {
+	typealias OctoPrintResponse = (Data?, Error?) -> Void
 	
-	func moveHead() {
+	func httpGetRequest(url: URL, completion : @escaping OctoPrintResponse) {
+		let request = URLRequest(url: url)
+		let session = URLSession.shared
+		let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
+			completion(data, error)
+		})
+		
+		task.resume()
+	}
+	
+	func httpPostRequest(url: URL, data: Data, completion: @escaping OctoPrintResponse) {
+		var request = URLRequest(url: url)
+		
+		request.httpMethod = "POST"
+	 	request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+		request.httpBody = data
+		
+		let session = URLSession.shared
+		let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
+			DispatchQueue.main.async {
+				completion(data, error)
+			}
+		})
+		
+		task.resume()
 	}
 	
 	func extrude() {
