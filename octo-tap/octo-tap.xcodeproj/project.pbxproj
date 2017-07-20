@@ -18,6 +18,11 @@
 		80B838EA1F1F069F00F90A13 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838E91F1F069F00F90A13 /* SetupViewController.swift */; };
 		80B838EC1F1F08E200F90A13 /* UserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838EB1F1F08E200F90A13 /* UserConstants.swift */; };
 		80B838EE1F1F113E00F90A13 /* StoryboardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838ED1F1F113E00F90A13 /* StoryboardConstants.swift */; };
+		80B838F31F1FB0C800F90A13 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838F21F1FB0C800F90A13 /* RootViewController.swift */; };
+		80B838F61F1FB62F00F90A13 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B838DC1F1EF4C200F90A13 /* Starscream.framework */; };
+		80B838F71F1FB62F00F90A13 /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80B838DC1F1EF4C200F90A13 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		80B838FC1F1FBA9900F90A13 /* SetupNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838FB1F1FBA9900F90A13 /* SetupNavigationViewController.swift */; };
+		80B838FE1F1FC08200F90A13 /* TextInpuCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838FD1F1FC08200F90A13 /* TextInpuCellTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +68,28 @@
 			remoteGlobalIDString = 091277A01BD673A70003036D;
 			remoteInfo = "Starscream tvOSTests";
 		};
+		80B838F81F1FB62F00F90A13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80B838D21F1EF4C100F90A13 /* Starscream.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6B3E79E519D48B7F006071F7;
+			remoteInfo = "Starscream iOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		80B838FA1F1FB62F00F90A13 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				80B838F71F1FB62F00F90A13 /* Starscream.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		80B838A41F1EEEC900F90A13 /* octo-tap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "octo-tap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +105,9 @@
 		80B838E91F1F069F00F90A13 /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		80B838EB1F1F08E200F90A13 /* UserConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConstants.swift; sourceTree = "<group>"; };
 		80B838ED1F1F113E00F90A13 /* StoryboardConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardConstants.swift; sourceTree = "<group>"; };
+		80B838F21F1FB0C800F90A13 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		80B838FB1F1FBA9900F90A13 /* SetupNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNavigationViewController.swift; sourceTree = "<group>"; };
+		80B838FD1F1FC08200F90A13 /* TextInpuCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInpuCellTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80B838E71F1EF4E800F90A13 /* Starscream.framework in Frameworks */,
+				80B838F61F1FB62F00F90A13 /* Starscream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,17 +143,15 @@
 		80B838A61F1EEEC900F90A13 /* octo-tap */ = {
 			isa = PBXGroup;
 			children = (
+				80B838F11F1FAF5000F90A13 /* Constants */,
+				80B838F01F1FAF4300F90A13 /* OctoPrint */,
+				80B838EF1F1FAF2C00F90A13 /* ViewControllers */,
 				80B838A71F1EEEC900F90A13 /* AppDelegate.swift */,
-				80B838A91F1EEEC900F90A13 /* DashboardViewController.swift */,
-				80B838AB1F1EEEC900F90A13 /* FileBrowserViewController.swift */,
-				80B838BB1F1EEF7500F90A13 /* Octoprint.swift */,
-				80B838E91F1F069F00F90A13 /* SetupViewController.swift */,
-				80B838EB1F1F08E200F90A13 /* UserConstants.swift */,
-				80B838ED1F1F113E00F90A13 /* StoryboardConstants.swift */,
 				80B838AD1F1EEEC900F90A13 /* Main.storyboard */,
 				80B838B01F1EEEC900F90A13 /* Assets.xcassets */,
 				80B838B21F1EEEC900F90A13 /* LaunchScreen.storyboard */,
 				80B838B51F1EEEC900F90A13 /* Info.plist */,
+				80B838FD1F1FC08200F90A13 /* TextInpuCellTableViewCell.swift */,
 			);
 			path = "octo-tap";
 			sourceTree = "<group>";
@@ -141,6 +169,35 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		80B838EF1F1FAF2C00F90A13 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				80B838E91F1F069F00F90A13 /* SetupViewController.swift */,
+				80B838AB1F1EEEC900F90A13 /* FileBrowserViewController.swift */,
+				80B838A91F1EEEC900F90A13 /* DashboardViewController.swift */,
+				80B838F21F1FB0C800F90A13 /* RootViewController.swift */,
+				80B838FB1F1FBA9900F90A13 /* SetupNavigationViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		80B838F01F1FAF4300F90A13 /* OctoPrint */ = {
+			isa = PBXGroup;
+			children = (
+				80B838BB1F1EEF7500F90A13 /* Octoprint.swift */,
+			);
+			path = OctoPrint;
+			sourceTree = "<group>";
+		};
+		80B838F11F1FAF5000F90A13 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				80B838EB1F1F08E200F90A13 /* UserConstants.swift */,
+				80B838ED1F1F113E00F90A13 /* StoryboardConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -151,10 +208,12 @@
 				80B838A01F1EEEC900F90A13 /* Sources */,
 				80B838A11F1EEEC900F90A13 /* Frameworks */,
 				80B838A21F1EEEC900F90A13 /* Resources */,
+				80B838FA1F1FB62F00F90A13 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				80B838F91F1FB62F00F90A13 /* PBXTargetDependency */,
 			);
 			name = "octo-tap";
 			productName = "octo-tap";
@@ -267,13 +326,24 @@
 				80B838EC1F1F08E200F90A13 /* UserConstants.swift in Sources */,
 				80B838AC1F1EEEC900F90A13 /* FileBrowserViewController.swift in Sources */,
 				80B838A81F1EEEC900F90A13 /* AppDelegate.swift in Sources */,
+				80B838FE1F1FC08200F90A13 /* TextInpuCellTableViewCell.swift in Sources */,
 				80B838AA1F1EEEC900F90A13 /* DashboardViewController.swift in Sources */,
 				80B838EA1F1F069F00F90A13 /* SetupViewController.swift in Sources */,
+				80B838FC1F1FBA9900F90A13 /* SetupNavigationViewController.swift in Sources */,
+				80B838F31F1FB0C800F90A13 /* RootViewController.swift in Sources */,
 				80B838EE1F1F113E00F90A13 /* StoryboardConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		80B838F91F1FB62F00F90A13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Starscream iOS";
+			targetProxy = 80B838F81F1FB62F00F90A13 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		80B838AD1F1EEEC900F90A13 /* Main.storyboard */ = {
@@ -401,9 +471,11 @@
 		80B838B91F1EEEC900F90A13 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6KLWRX98B4;
 				INFOPLIST_FILE = "octo-tap/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.valine.octo-tap";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -415,9 +487,11 @@
 		80B838BA1F1EEEC900F90A13 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6KLWRX98B4;
 				INFOPLIST_FILE = "octo-tap/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.valine.octo-tap";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -445,6 +519,7 @@
 				80B838BA1F1EEEC900F90A13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

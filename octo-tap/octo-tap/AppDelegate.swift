@@ -18,18 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
+		UserDefaults.standard.register(defaults: [UserConstants.App.firstLaunch.rawValue : true])
+		let isFirstLaunch = UserDefaults.standard.bool(forKey: UserConstants.App.firstLaunch.rawValue)
 		
-		UserDefaults.standard.register(defaults: [Settings.App.firstLaunch.rawValue : true])
-		let isFirstLaunch = UserDefaults.standard.bool(forKey: Settings.App.firstLaunch.rawValue)
-		
-		//if (isFirstLaunch) {
-			UserDefaults.standard.set(false, forKey: Settings.App.firstLaunch.rawValue)
-			
-			let storyboard = UIStoryboard(name: "Main", bundle: nil)
-			let viewController = storyboard.instantiateViewController(withIdentifier: SetupViewController.storyboardIdentifier)
-			self.window?.rootViewController = viewController
-		
-		//}
+		if (isFirstLaunch) {
+			UserDefaults.standard.set(false, forKey: UserConstants.App.firstLaunch.rawValue)
+		}
 		
 		return true
 	}

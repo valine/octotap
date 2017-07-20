@@ -12,7 +12,7 @@
 
 import Foundation
 
-enum Settings {
+enum UserConstants {
 	
 	enum Server : String {
 		case apiKey
@@ -34,6 +34,7 @@ enum Settings {
 	
 	enum App : String {
 		case firstLaunch
+		case setupSuccessful
 	}
 	
 }

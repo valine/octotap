@@ -12,19 +12,25 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController {
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
-		
-	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
-
+protocol StoryboardIdentifiable {
+	static var storyboardIdentifier: String { get }
 }
+
+extension StoryboardIdentifiable where Self: UIViewController {
+	static var storyboardIdentifier: String {
+		return String(describing: self)
+	}
+}
+
+extension UIViewController: StoryboardIdentifiable { }
+
+extension UIStoryboard {
+	enum Storyboard: String {
+		case main
+		var filename: String {
+			return rawValue.capitalized
+		}
+	}
+}
+
 

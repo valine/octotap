@@ -12,8 +12,8 @@
 
 import Foundation
 
-// OctoPrint rest api requests are made here
 class Octoprint {
+	
 	typealias OctoPrintResponse = (Data?, Error?) -> Void
 	
 	func httpGetRequest(url: URL, completion : @escaping OctoPrintResponse) {
