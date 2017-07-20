@@ -14,13 +14,15 @@ import UIKit
 
 class SetupViewController : UITableViewController, UITextFieldDelegate {
 	
-	@IBOutlet weak var serverAddress: UITextField!
+	@IBOutlet weak var serverAddressStatus: UILabel!
+	@IBOutlet weak var serverAddressInput: UITextField!
 	
 	override func viewDidLoad() {
+		
 		super.viewDidLoad()
 		//TODO: Get UI apikey from server
-		UserDefaults.standard.set("D58433B85CD84D539ED5A3E7326F82DC", forKey: UserConstants.Server.apiKey.rawValue)
-		serverAddress.delegate = self
+		UserDefaults.standard.set("D58433B85CD84D539ED5A3E7326F82DC", forKey: Constants.Server.apiKey.rawValue)
+		serverAddressInput.delegate = self
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -28,28 +30,43 @@ class SetupViewController : UITableViewController, UITextFieldDelegate {
 		// Dispose of any resources that can be recreated.
 	}
 	
-	@IBAction func doneTapped(_ sender: Any) {
-		dismiss(animated: true, completion: nil)
+	@IBAction func join(_ sender: Any) {
+		//dismiss(animated: true, completion: nil)
+		if let userInput = serverAddressInput.text {
+			UserDefaults.standard.set(userInput.withHttp(), forKey: Constants.Server.address.rawValue)
+		}
+		
+		let apikey = UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
+		let serverAddress = URL(string: UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)!)
+		let octoprint = Octoprint()
+		
+		if let validURL = serverAddress {
+			octoprint.getUIApiKey(address: validURL, completion: {(keyString: String?, error : Error?) -> Void in
+				if (error != nil) {
+					self.serverAddressInput.textColor = .red
+					self.serverAddressStatus.textColor = .red
+					self.serverAddressStatus.text = Constants.Strings.badConnections
+				} else {
+					print(keyString!)
+					self.serverAddressInput.textColor = .blue
+					self.serverAddressStatus.textColor = .green
+					self.serverAddressStatus.text = Constants.Strings.successful
+				}
+			})
+		} else {
+			serverAddressInput.textColor = .red
+			serverAddressStatus.textColor = .red
+			serverAddressStatus.text = Constants.Strings.invalidURL
+		}
 	}
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		print(textField.text!)
+		
+		if textField == serverAddressInput {
+			join(textField)
+		}
+		
 		return true
 	}
 	
-	
-		
-	
-//	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//		return 0 // your number of cell here
-//	}
-//	
-//	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//		// your cell coding
-//		return UITableViewCell()
-//	}
-//	
-//	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
-//		// cell selected code here
-//	}
 }

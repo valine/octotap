@@ -16,13 +16,14 @@
 		80B838BC1F1EEF7500F90A13 /* Octoprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838BB1F1EEF7500F90A13 /* Octoprint.swift */; };
 		80B838E71F1EF4E800F90A13 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B838DC1F1EF4C200F90A13 /* Starscream.framework */; };
 		80B838EA1F1F069F00F90A13 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838E91F1F069F00F90A13 /* SetupViewController.swift */; };
-		80B838EC1F1F08E200F90A13 /* UserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838EB1F1F08E200F90A13 /* UserConstants.swift */; };
+		80B838EC1F1F08E200F90A13 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838EB1F1F08E200F90A13 /* Constants.swift */; };
 		80B838EE1F1F113E00F90A13 /* StoryboardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838ED1F1F113E00F90A13 /* StoryboardConstants.swift */; };
 		80B838F31F1FB0C800F90A13 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838F21F1FB0C800F90A13 /* RootViewController.swift */; };
 		80B838F61F1FB62F00F90A13 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B838DC1F1EF4C200F90A13 /* Starscream.framework */; };
 		80B838F71F1FB62F00F90A13 /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80B838DC1F1EF4C200F90A13 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		80B838FC1F1FBA9900F90A13 /* SetupNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838FB1F1FBA9900F90A13 /* SetupNavigationViewController.swift */; };
 		80B838FE1F1FC08200F90A13 /* TextInpuCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838FD1F1FC08200F90A13 /* TextInpuCellTableViewCell.swift */; };
+		80DF97791F21621400E254A5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DF97781F21621400E254A5 /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,11 +104,12 @@
 		80B838BB1F1EEF7500F90A13 /* Octoprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Octoprint.swift; sourceTree = "<group>"; };
 		80B838D21F1EF4C100F90A13 /* Starscream.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Starscream.xcodeproj; path = ../Starscream/Starscream.xcodeproj; sourceTree = "<group>"; };
 		80B838E91F1F069F00F90A13 /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
-		80B838EB1F1F08E200F90A13 /* UserConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConstants.swift; sourceTree = "<group>"; };
+		80B838EB1F1F08E200F90A13 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		80B838ED1F1F113E00F90A13 /* StoryboardConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardConstants.swift; sourceTree = "<group>"; };
 		80B838F21F1FB0C800F90A13 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		80B838FB1F1FBA9900F90A13 /* SetupNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNavigationViewController.swift; sourceTree = "<group>"; };
 		80B838FD1F1FC08200F90A13 /* TextInpuCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInpuCellTableViewCell.swift; sourceTree = "<group>"; };
+		80DF97781F21621400E254A5 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 		80B838A61F1EEEC900F90A13 /* octo-tap */ = {
 			isa = PBXGroup;
 			children = (
+				80DF977F1F21621800E254A5 /* Extensions */,
 				80B838F11F1FAF5000F90A13 /* Constants */,
 				80B838F01F1FAF4300F90A13 /* OctoPrint */,
 				80B838EF1F1FAF2C00F90A13 /* ViewControllers */,
@@ -192,10 +195,18 @@
 		80B838F11F1FAF5000F90A13 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				80B838EB1F1F08E200F90A13 /* UserConstants.swift */,
+				80B838EB1F1F08E200F90A13 /* Constants.swift */,
 				80B838ED1F1F113E00F90A13 /* StoryboardConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		80DF977F1F21621800E254A5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				80DF97781F21621400E254A5 /* String.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,7 +334,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				80B838BC1F1EEF7500F90A13 /* Octoprint.swift in Sources */,
-				80B838EC1F1F08E200F90A13 /* UserConstants.swift in Sources */,
+				80DF97791F21621400E254A5 /* String.swift in Sources */,
+				80B838EC1F1F08E200F90A13 /* Constants.swift in Sources */,
 				80B838AC1F1EEEC900F90A13 /* FileBrowserViewController.swift in Sources */,
 				80B838A81F1EEEC900F90A13 /* AppDelegate.swift in Sources */,
 				80B838FE1F1FC08200F90A13 /* TextInpuCellTableViewCell.swift in Sources */,

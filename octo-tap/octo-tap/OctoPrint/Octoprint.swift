@@ -15,6 +15,22 @@ import Foundation
 class Octoprint {
 	
 	typealias OctoPrintResponse = (Data?, Error?) -> Void
+	typealias StringResponse = (String?, Error?) -> Void
+	
+	func getUIApiKey(address: URL, completion : @escaping StringResponse) {
+		httpGetRequest(url: address, completion: {(data: Data?, error : Error?) -> Void in
+			if let retrievedData = data {
+				let response = String(data: retrievedData, encoding: String.Encoding.utf8) as String!
+				DispatchQueue.main.async(){
+					completion(response, error)
+				}
+			} else {
+				DispatchQueue.main.async(){
+					completion(nil, error)
+				}
+			}
+		})
+	}
 	
 	func httpGetRequest(url: URL, completion : @escaping OctoPrintResponse) {
 		let request = URLRequest(url: url)

@@ -27,7 +27,6 @@ class RootViewController: UITabBarController {
 			viewController.popoverPresentationController?.sourceView = view
 			viewController.popoverPresentationController?.sourceRect = view.bounds
 			viewController.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
-			
 			viewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
 			
 			present(viewController, animated: false, completion: nil)

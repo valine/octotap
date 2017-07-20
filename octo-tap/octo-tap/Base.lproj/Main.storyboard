@@ -266,12 +266,13 @@
                         <barButtonItem key="rightBarButtonItem" title="Join" style="done" id="4xV-Pf-Zue">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="doneTapped:" destination="okL-en-Dhd" id="VM9-M3-PjM"/>
+                                <action selector="join:" destination="okL-en-Dhd" id="NAU-T9-jSY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="serverAddress" destination="cSk-od-o4k" id="lWd-mI-iwy"/>
+                        <outlet property="serverAddressInput" destination="cSk-od-o4k" id="lWd-mI-iwy"/>
+                        <outlet property="serverAddressStatus" destination="A5q-57-tWF" id="w8x-QZ-6Ul"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WAE-K8-lQd" userLabel="First Responder" sceneMemberID="firstResponder"/>

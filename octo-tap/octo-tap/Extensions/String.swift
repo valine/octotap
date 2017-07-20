@@ -12,29 +12,14 @@
 
 import Foundation
 
-enum UserConstants {
+extension String {
 	
-	enum Server : String {
-		case apiKey
-		case address
-	}
-	
-	enum Printer {
-		enum JogDistance {
-			case x
-			case y
-			case z
+	func withHttp() -> String{
+		if(self.hasPrefix("http://") || self.hasPrefix("https://")){
+			return self
 		}
-		
-		enum Extruder {
-			case extrusionAmount
-			case flowRate
-		}
-	}
-	
-	enum App : String {
-		case firstLaunch
-		case setupSuccessful
+		return "http://\(self)"
 	}
 	
 }
+
