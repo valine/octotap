@@ -11,6 +11,7 @@
 //  limitations under the License.
 
 import Foundation
+import SwiftWebSocket
 
 class Octoprint {
 	
@@ -30,7 +31,22 @@ class Octoprint {
 				}
 			}
 		})
+		
+		let url = "ws://10.0.1.92:5000/sockjs/websocket"
+		
+		let socket = WebSocket(url)
+		socket.event.open = {
+			print("opened")
+		}
+		
+		socket.event.message = { message in
+			if let text = message as? String {
+				print(text)
+			}
+		}
+		
 	}
+	
 	
 	func httpGetRequest(url: URL, completion : @escaping OctoPrintResponse) {
 		let request = URLRequest(url: url)

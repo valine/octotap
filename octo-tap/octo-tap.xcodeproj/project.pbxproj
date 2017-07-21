@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		801855A31F21D87600B22859 /* SwiftWebSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801855981F21D86600B22859 /* SwiftWebSocket.framework */; };
+		801855A41F21D87600B22859 /* SwiftWebSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 801855981F21D86600B22859 /* SwiftWebSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		80B838A81F1EEEC900F90A13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838A71F1EEEC900F90A13 /* AppDelegate.swift */; };
 		80B838AA1F1EEEC900F90A13 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838A91F1EEEC900F90A13 /* DashboardViewController.swift */; };
 		80B838AC1F1EEEC900F90A13 /* FileBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838AB1F1EEEC900F90A13 /* FileBrowserViewController.swift */; };
@@ -14,67 +16,64 @@
 		80B838B11F1EEEC900F90A13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B838B01F1EEEC900F90A13 /* Assets.xcassets */; };
 		80B838B41F1EEEC900F90A13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80B838B21F1EEEC900F90A13 /* LaunchScreen.storyboard */; };
 		80B838BC1F1EEF7500F90A13 /* Octoprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838BB1F1EEF7500F90A13 /* Octoprint.swift */; };
-		80B838E71F1EF4E800F90A13 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B838DC1F1EF4C200F90A13 /* Starscream.framework */; };
 		80B838EA1F1F069F00F90A13 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838E91F1F069F00F90A13 /* SetupViewController.swift */; };
 		80B838EC1F1F08E200F90A13 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838EB1F1F08E200F90A13 /* Constants.swift */; };
-		80B838EE1F1F113E00F90A13 /* StoryboardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838ED1F1F113E00F90A13 /* StoryboardConstants.swift */; };
+		80B838EE1F1F113E00F90A13 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838ED1F1F113E00F90A13 /* Storyboard.swift */; };
 		80B838F31F1FB0C800F90A13 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838F21F1FB0C800F90A13 /* RootViewController.swift */; };
-		80B838F61F1FB62F00F90A13 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B838DC1F1EF4C200F90A13 /* Starscream.framework */; };
-		80B838F71F1FB62F00F90A13 /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80B838DC1F1EF4C200F90A13 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		80B838FC1F1FBA9900F90A13 /* SetupNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838FB1F1FBA9900F90A13 /* SetupNavigationViewController.swift */; };
 		80B838FE1F1FC08200F90A13 /* TextInpuCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838FD1F1FC08200F90A13 /* TextInpuCellTableViewCell.swift */; };
 		80DF97791F21621400E254A5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DF97781F21621400E254A5 /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		80B838DB1F1EF4C200F90A13 /* PBXContainerItemProxy */ = {
+		801855971F21D86600B22859 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 80B838D21F1EF4C100F90A13 /* Starscream.xcodeproj */;
+			containerPortal = 8018558E1F21D86500B22859 /* SwiftWebSocket.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 6B3E79E619D48B7F006071F7;
-			remoteInfo = "Starscream iOS";
+			remoteGlobalIDString = 03D1E7031B20897100AC49AC;
+			remoteInfo = "SwiftWebSocket-iOS";
 		};
-		80B838DD1F1EF4C200F90A13 /* PBXContainerItemProxy */ = {
+		801855991F21D86600B22859 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 80B838D21F1EF4C100F90A13 /* Starscream.xcodeproj */;
+			containerPortal = 8018558E1F21D86500B22859 /* SwiftWebSocket.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 6B3E79F119D48B7F006071F7;
-			remoteInfo = "Starscream iOSTests";
+			remoteGlobalIDString = D71949011B35E6130015C529;
+			remoteInfo = "SwiftWebSocket-OSX";
 		};
-		80B838DF1F1EF4C200F90A13 /* PBXContainerItemProxy */ = {
+		8018559B1F21D86600B22859 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 80B838D21F1EF4C100F90A13 /* Starscream.xcodeproj */;
+			containerPortal = 8018558E1F21D86500B22859 /* SwiftWebSocket.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D9C3E35F19E48FF1009FC285;
-			remoteInfo = "Starscream OSX";
+			remoteGlobalIDString = 03957A3C1C5A71DB005CC1DB;
+			remoteInfo = "SwiftWebSocket-tvOS";
 		};
-		80B838E11F1EF4C200F90A13 /* PBXContainerItemProxy */ = {
+		8018559D1F21D86600B22859 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 80B838D21F1EF4C100F90A13 /* Starscream.xcodeproj */;
+			containerPortal = 8018558E1F21D86500B22859 /* SwiftWebSocket.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D9C3E36919E48FF1009FC285;
-			remoteInfo = "Starscream OSXTests";
+			remoteGlobalIDString = 03D70CCC1BDAC5EC00D245C3;
+			remoteInfo = "Test-OSX";
 		};
-		80B838E31F1EF4C200F90A13 /* PBXContainerItemProxy */ = {
+		8018559F1F21D86600B22859 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 80B838D21F1EF4C100F90A13 /* Starscream.xcodeproj */;
+			containerPortal = 8018558E1F21D86500B22859 /* SwiftWebSocket.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 091277971BD673A70003036D;
-			remoteInfo = "Starscream tvOS";
+			remoteGlobalIDString = 03D70CDB1BDAC63600D245C3;
+			remoteInfo = "Test-iOS";
 		};
-		80B838E51F1EF4C200F90A13 /* PBXContainerItemProxy */ = {
+		801855A11F21D86600B22859 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 80B838D21F1EF4C100F90A13 /* Starscream.xcodeproj */;
+			containerPortal = 8018558E1F21D86500B22859 /* SwiftWebSocket.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 091277A01BD673A70003036D;
-			remoteInfo = "Starscream tvOSTests";
+			remoteGlobalIDString = D78C40301C232C3800EB72AA;
+			remoteInfo = "Test-ObjectiveC";
 		};
-		80B838F81F1FB62F00F90A13 /* PBXContainerItemProxy */ = {
+		801855A51F21D87600B22859 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 80B838D21F1EF4C100F90A13 /* Starscream.xcodeproj */;
+			containerPortal = 8018558E1F21D86500B22859 /* SwiftWebSocket.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 6B3E79E519D48B7F006071F7;
-			remoteInfo = "Starscream iOS";
+			remoteGlobalIDString = 03D1E7021B20897100AC49AC;
+			remoteInfo = "SwiftWebSocket-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -85,7 +84,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				80B838F71F1FB62F00F90A13 /* Starscream.framework in Embed Frameworks */,
+				801855A41F21D87600B22859 /* SwiftWebSocket.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,6 +92,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8018558E1F21D86500B22859 /* SwiftWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftWebSocket.xcodeproj; path = ../SwiftWebSocket/SwiftWebSocket.xcodeproj; sourceTree = "<group>"; };
 		80B838A41F1EEEC900F90A13 /* octo-tap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "octo-tap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80B838A71F1EEEC900F90A13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80B838A91F1EEEC900F90A13 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -102,10 +102,9 @@
 		80B838B31F1EEEC900F90A13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		80B838B51F1EEEC900F90A13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80B838BB1F1EEF7500F90A13 /* Octoprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Octoprint.swift; sourceTree = "<group>"; };
-		80B838D21F1EF4C100F90A13 /* Starscream.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Starscream.xcodeproj; path = ../Starscream/Starscream.xcodeproj; sourceTree = "<group>"; };
 		80B838E91F1F069F00F90A13 /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		80B838EB1F1F08E200F90A13 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		80B838ED1F1F113E00F90A13 /* StoryboardConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardConstants.swift; sourceTree = "<group>"; };
+		80B838ED1F1F113E00F90A13 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		80B838F21F1FB0C800F90A13 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		80B838FB1F1FBA9900F90A13 /* SetupNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNavigationViewController.swift; sourceTree = "<group>"; };
 		80B838FD1F1FC08200F90A13 /* TextInpuCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInpuCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -117,20 +116,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80B838E71F1EF4E800F90A13 /* Starscream.framework in Frameworks */,
-				80B838F61F1FB62F00F90A13 /* Starscream.framework in Frameworks */,
+				801855A31F21D87600B22859 /* SwiftWebSocket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8018558F1F21D86500B22859 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				801855981F21D86600B22859 /* SwiftWebSocket.framework */,
+				8018559A1F21D86600B22859 /* SwiftWebSocket.framework */,
+				8018559C1F21D86600B22859 /* SwiftWebSocket.framework */,
+				8018559E1F21D86600B22859 /* Test-OSX.xctest */,
+				801855A01F21D86600B22859 /* Test-iOS.xctest */,
+				801855A21F21D86600B22859 /* Test-ObjectiveC.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		80B8389B1F1EEEC900F90A13 = {
 			isa = PBXGroup;
 			children = (
 				80B838A61F1EEEC900F90A13 /* octo-tap */,
 				80B838A51F1EEEC900F90A13 /* Products */,
-				80B838D21F1EF4C100F90A13 /* Starscream.xcodeproj */,
+				8018558E1F21D86500B22859 /* SwiftWebSocket.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,19 +170,6 @@
 			path = "octo-tap";
 			sourceTree = "<group>";
 		};
-		80B838D31F1EF4C100F90A13 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				80B838DC1F1EF4C200F90A13 /* Starscream.framework */,
-				80B838DE1F1EF4C200F90A13 /* Starscream iOSTests.xctest */,
-				80B838E01F1EF4C200F90A13 /* Starscream.framework */,
-				80B838E21F1EF4C200F90A13 /* Starscream OSXTests.xctest */,
-				80B838E41F1EF4C200F90A13 /* Starscream.framework */,
-				80B838E61F1EF4C200F90A13 /* Starscream tvOSTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		80B838EF1F1FAF2C00F90A13 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				80B838EB1F1F08E200F90A13 /* Constants.swift */,
-				80B838ED1F1F113E00F90A13 /* StoryboardConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -205,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				80DF97781F21621400E254A5 /* String.swift */,
+				80B838ED1F1F113E00F90A13 /* Storyboard.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -224,7 +222,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				80B838F91F1FB62F00F90A13 /* PBXTargetDependency */,
+				801855A61F21D87600B22859 /* PBXTargetDependency */,
 			);
 			name = "octo-tap";
 			productName = "octo-tap";
@@ -259,8 +257,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 80B838D31F1EF4C100F90A13 /* Products */;
-					ProjectRef = 80B838D21F1EF4C100F90A13 /* Starscream.xcodeproj */;
+					ProductGroup = 8018558F1F21D86500B22859 /* Products */;
+					ProjectRef = 8018558E1F21D86500B22859 /* SwiftWebSocket.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -271,46 +269,46 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		80B838DC1F1EF4C200F90A13 /* Starscream.framework */ = {
+		801855981F21D86600B22859 /* SwiftWebSocket.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = Starscream.framework;
-			remoteRef = 80B838DB1F1EF4C200F90A13 /* PBXContainerItemProxy */;
+			path = SwiftWebSocket.framework;
+			remoteRef = 801855971F21D86600B22859 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80B838DE1F1EF4C200F90A13 /* Starscream iOSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Starscream iOSTests.xctest";
-			remoteRef = 80B838DD1F1EF4C200F90A13 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80B838E01F1EF4C200F90A13 /* Starscream.framework */ = {
+		8018559A1F21D86600B22859 /* SwiftWebSocket.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = Starscream.framework;
-			remoteRef = 80B838DF1F1EF4C200F90A13 /* PBXContainerItemProxy */;
+			path = SwiftWebSocket.framework;
+			remoteRef = 801855991F21D86600B22859 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80B838E21F1EF4C200F90A13 /* Starscream OSXTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Starscream OSXTests.xctest";
-			remoteRef = 80B838E11F1EF4C200F90A13 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80B838E41F1EF4C200F90A13 /* Starscream.framework */ = {
+		8018559C1F21D86600B22859 /* SwiftWebSocket.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = Starscream.framework;
-			remoteRef = 80B838E31F1EF4C200F90A13 /* PBXContainerItemProxy */;
+			path = SwiftWebSocket.framework;
+			remoteRef = 8018559B1F21D86600B22859 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80B838E61F1EF4C200F90A13 /* Starscream tvOSTests.xctest */ = {
+		8018559E1F21D86600B22859 /* Test-OSX.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = "Starscream tvOSTests.xctest";
-			remoteRef = 80B838E51F1EF4C200F90A13 /* PBXContainerItemProxy */;
+			path = "Test-OSX.xctest";
+			remoteRef = 8018559D1F21D86600B22859 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		801855A01F21D86600B22859 /* Test-iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Test-iOS.xctest";
+			remoteRef = 8018559F1F21D86600B22859 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		801855A21F21D86600B22859 /* Test-ObjectiveC.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Test-ObjectiveC.xctest";
+			remoteRef = 801855A11F21D86600B22859 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -343,17 +341,17 @@
 				80B838EA1F1F069F00F90A13 /* SetupViewController.swift in Sources */,
 				80B838FC1F1FBA9900F90A13 /* SetupNavigationViewController.swift in Sources */,
 				80B838F31F1FB0C800F90A13 /* RootViewController.swift in Sources */,
-				80B838EE1F1F113E00F90A13 /* StoryboardConstants.swift in Sources */,
+				80B838EE1F1F113E00F90A13 /* Storyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		80B838F91F1FB62F00F90A13 /* PBXTargetDependency */ = {
+		801855A61F21D87600B22859 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "Starscream iOS";
-			targetProxy = 80B838F81F1FB62F00F90A13 /* PBXContainerItemProxy */;
+			name = "SwiftWebSocket-iOS";
+			targetProxy = 801855A51F21D87600B22859 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

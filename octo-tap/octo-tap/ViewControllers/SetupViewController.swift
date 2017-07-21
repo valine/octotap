@@ -43,19 +43,19 @@ class SetupViewController : UITableViewController, UITextFieldDelegate {
 		if let validURL = serverAddress {
 			octoprint.getUIApiKey(address: validURL, completion: {(keyString: String?, error : Error?) -> Void in
 				if (error != nil) {
-					self.serverAddressInput.textColor = .red
-					self.serverAddressStatus.textColor = .red
+					self.serverAddressInput.textColor =  Constants.Colors.errorRed
+					self.serverAddressStatus.textColor = Constants.Colors.errorRed
 					self.serverAddressStatus.text = Constants.Strings.badConnections
 				} else {
-					print(keyString!)
-					self.serverAddressInput.textColor = .blue
-					self.serverAddressStatus.textColor = .green
+					//print(keyString!)
+					self.serverAddressInput.textColor = Constants.Colors.octotapGreen
+					self.serverAddressStatus.textColor = Constants.Colors.octotapGreen
 					self.serverAddressStatus.text = Constants.Strings.successful
 				}
 			})
 		} else {
-			serverAddressInput.textColor = .red
-			serverAddressStatus.textColor = .red
+			serverAddressInput.textColor = Constants.Colors.errorRed
+			serverAddressStatus.textColor = Constants.Colors.errorRed
 			serverAddressStatus.text = Constants.Strings.invalidURL
 		}
 	}
