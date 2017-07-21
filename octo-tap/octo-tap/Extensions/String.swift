@@ -14,11 +14,25 @@ import Foundation
 
 extension String {
 	
-	func withHttp() -> String{
+	func withHttp() -> String {
 		if(self.hasPrefix("http://") || self.hasPrefix("https://")){
 			return self
 		}
 		return "http://\(self)"
+	}
+	
+	func webSocketAddr() -> String {
+		
+		if(self.hasPrefix("http://") || self.hasPrefix("https://")) {
+			return "ws\(self.substring(from: self.index(of: ":")!))"
+			
+		}  else if (self.hasPrefix("ws://")) {
+			return self
+			
+		} else {
+			return "ws://\(self)"
+		}
+		
 	}
 	
 }

@@ -17,21 +17,40 @@ class RootViewController: UITabBarController {
 	var setupSuccessful = false;
 	
 	override func viewDidAppear(_ animated: Bool) {
+		let serverAddress = UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)
+		let octoprint = Octoprint()
 		
-		//let setupSuccessful = UserDefaults.standard.bool(forKey: UserConstants.App.setupSuccessful.rawValue)
-		
-		if (!setupSuccessful) {
-			let storyboard = UIStoryboard(name: UIStoryboard.Storyboard.main.filename, bundle: nil)
-			let viewController = storyboard.instantiateViewController(withIdentifier: SetupNavigationViewController.storyboardIdentifier)
-			viewController.modalPresentationStyle = UIModalPresentationStyle.popover
-			viewController.popoverPresentationController?.sourceView = view
-			viewController.popoverPresentationController?.sourceRect = view.bounds
-			viewController.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
-			viewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
-			
-			present(viewController, animated: false, completion: nil)
-			setupSuccessful = true
+		if serverAddress == nil || serverAddress == "" {
+			self.showSetup()
+		} else {
+			if let validURL = serverAddress?.withHttp() {
+				octoprint.getUIApiKey(address: URL(string: validURL)!, completion: {(keyString: String?, error : Error?) -> Void in
+					if (error != nil) {
+						// BAD CONNECTION
+						self.showSetup()
+					} else {
+						// SUCESS
+						UserDefaults.standard.set(keyString, forKey: Constants.Server.apiKey.rawValue)
+					}
+				})
+			} else {
+				// BAD INPUT
+				self.showSetup()
+			}
 		}
+		
+	}
+	
+	func showSetup() {
+		let storyboard = UIStoryboard(name: UIStoryboard.Storyboard.main.filename, bundle: nil)
+		let viewController = storyboard.instantiateViewController(withIdentifier: SetupNavigationViewController.storyboardIdentifier)
+		viewController.modalPresentationStyle = UIModalPresentationStyle.popover
+		viewController.popoverPresentationController?.sourceView = view
+		viewController.popoverPresentationController?.sourceRect = view.bounds
+		viewController.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+		viewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+		
+		present(viewController, animated: false, completion: nil)
 	}
 	
 	override func didReceiveMemoryWarning() {

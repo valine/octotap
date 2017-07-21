@@ -18,42 +18,41 @@ class SetupViewController : UITableViewController, UITextFieldDelegate {
 	@IBOutlet weak var serverAddressInput: UITextField!
 	
 	override func viewDidLoad() {
-		
 		super.viewDidLoad()
-		//TODO: Get UI apikey from server
-		UserDefaults.standard.set("D58433B85CD84D539ED5A3E7326F82DC", forKey: Constants.Server.apiKey.rawValue)
 		serverAddressInput.delegate = self
-	}
-	
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
+		
+		if let serverAddress =  UserDefaults.standard.string(forKey: Constants.Server.address.rawValue) {
+			serverAddressInput.text = serverAddress
+		}
 	}
 	
 	@IBAction func join(_ sender: Any) {
-		//dismiss(animated: true, completion: nil)
 		if let userInput = serverAddressInput.text {
 			UserDefaults.standard.set(userInput.withHttp(), forKey: Constants.Server.address.rawValue)
 		}
-		
-		let apikey = UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
 		let serverAddress = URL(string: UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)!)
 		let octoprint = Octoprint()
 		
 		if let validURL = serverAddress {
 			octoprint.getUIApiKey(address: validURL, completion: {(keyString: String?, error : Error?) -> Void in
 				if (error != nil) {
+					// BAD CONNECTION
 					self.serverAddressInput.textColor =  Constants.Colors.errorRed
 					self.serverAddressStatus.textColor = Constants.Colors.errorRed
 					self.serverAddressStatus.text = Constants.Strings.badConnections
 				} else {
-					//print(keyString!)
+					// SUCESS
 					self.serverAddressInput.textColor = Constants.Colors.octotapGreen
 					self.serverAddressStatus.textColor = Constants.Colors.octotapGreen
 					self.serverAddressStatus.text = Constants.Strings.successful
+					
+					UserDefaults.standard.set(keyString, forKey: Constants.Server.apiKey.rawValue)
+					self.serverAddressInput.resignFirstResponder()
+					self.dismiss(animated: true, completion: nil)
 				}
 			})
 		} else {
+			// BAD INPUT
 			serverAddressInput.textColor = Constants.Colors.errorRed
 			serverAddressStatus.textColor = Constants.Colors.errorRed
 			serverAddressStatus.text = Constants.Strings.invalidURL
@@ -61,12 +60,14 @@ class SetupViewController : UITableViewController, UITextFieldDelegate {
 	}
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		
 		if textField == serverAddressInput {
 			join(textField)
 		}
-		
 		return true
+	}
+	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
 	}
 	
 }
