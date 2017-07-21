@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		801855A31F21D87600B22859 /* SwiftWebSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801855981F21D86600B22859 /* SwiftWebSocket.framework */; };
 		801855A41F21D87600B22859 /* SwiftWebSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 801855981F21D86600B22859 /* SwiftWebSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		801855A81F2266DC00B22859 /* OctoConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801855A71F2266DC00B22859 /* OctoConnection.swift */; };
 		80B838A81F1EEEC900F90A13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838A71F1EEEC900F90A13 /* AppDelegate.swift */; };
 		80B838AA1F1EEEC900F90A13 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838A91F1EEEC900F90A13 /* DashboardViewController.swift */; };
 		80B838AC1F1EEEC900F90A13 /* FileBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838AB1F1EEEC900F90A13 /* FileBrowserViewController.swift */; };
@@ -93,6 +94,7 @@
 
 /* Begin PBXFileReference section */
 		8018558E1F21D86500B22859 /* SwiftWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftWebSocket.xcodeproj; path = ../SwiftWebSocket/SwiftWebSocket.xcodeproj; sourceTree = "<group>"; };
+		801855A71F2266DC00B22859 /* OctoConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctoConnection.swift; sourceTree = "<group>"; };
 		80B838A41F1EEEC900F90A13 /* octo-tap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "octo-tap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80B838A71F1EEEC900F90A13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80B838A91F1EEEC900F90A13 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				80B838BB1F1EEF7500F90A13 /* Octoprint.swift */,
+				801855A71F2266DC00B22859 /* OctoConnection.swift */,
 			);
 			path = OctoPrint;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				80B838A81F1EEEC900F90A13 /* AppDelegate.swift in Sources */,
 				80B838FE1F1FC08200F90A13 /* TextInpuCellTableViewCell.swift in Sources */,
 				80B838AA1F1EEEC900F90A13 /* DashboardViewController.swift in Sources */,
+				801855A81F2266DC00B22859 /* OctoConnection.swift in Sources */,
 				80B838EA1F1F069F00F90A13 /* SetupViewController.swift in Sources */,
 				80B838FC1F1FBA9900F90A13 /* SetupNavigationViewController.swift in Sources */,
 				80B838F31F1FB0C800F90A13 /* RootViewController.swift in Sources */,

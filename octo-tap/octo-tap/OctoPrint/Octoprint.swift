@@ -39,9 +39,19 @@ class Octoprint {
 			print("opened")
 		}
 		
+		
 		socket.event.message = { message in
-			if let text = message as? String {
-				print(text)
+			if let jsonString = message as? String {
+				//print(text)
+				
+				let decoder = JSONDecoder()
+				do {
+					let connection = try decoder.decode(OctoConnection.self, from: jsonString.data(using: .utf8)!)
+					print(connection.connected.apikey)
+					socket.close()
+				} catch {
+					print("failed")
+				}
 			}
 		}
 		
