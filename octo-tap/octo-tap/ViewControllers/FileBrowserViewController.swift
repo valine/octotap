@@ -29,7 +29,7 @@ class FileBrowserViewController: UIViewController, UITableViewDataSource, UITabl
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 85;
+		return 73;
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
