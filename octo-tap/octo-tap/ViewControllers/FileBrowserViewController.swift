@@ -12,12 +12,32 @@
 
 import UIKit
 
-class FileBrowserViewController: UIViewController {
-
+class FileBrowserViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+	
+	@IBOutlet weak var filesTableView: UITableView!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
+		filesTableView.delegate = self
+		filesTableView.dataSource = self
+		filesTableView.separatorColor = Constants.Colors.almostBlack
 	}
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		//TODO pull number of tools
+		return 3
+	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 85;
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell:FilesCell = self.filesTableView.dequeueReusableCell(withIdentifier: Constants.TabelCellResuseIDs.filesCell.rawValue) as! FilesCell!
+	
+		return cell
+	}
+	
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()

@@ -12,8 +12,36 @@
 
 import UIKit
 
-class TemperatureViewController: UIViewController, UITableVIewDelegate {
+class TemperatureViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	
+	@IBOutlet weak var toolTableView: UITableView!
 	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		toolTableView.delegate = self
+		toolTableView.dataSource = self
+		toolTableView.separatorColor = Constants.Colors.almostBlack
+	}
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		//TODO pull number of tools
+		return 3
+	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 110;
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell:ToolCell = self.toolTableView.dequeueReusableCell(withIdentifier: Constants.TabelCellResuseIDs.toolCell.rawValue) as! ToolCell!
+		
+		if (indexPath.item == indexPath.endIndex) {
+			cell.hideExtruderControls()
+			cell.toolNameLabel.text = Constants.Strings.bedToolName
+		} else {
+			cell.toolNameLabel.text = "\(Constants.Strings.toolName) \(indexPath.item)"
+		}
+		return cell
+	}
 	
 }

@@ -11,10 +11,11 @@
 		801855A41F21D87600B22859 /* SwiftWebSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 801855981F21D86600B22859 /* SwiftWebSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		801855A81F2266DC00B22859 /* OctoConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801855A71F2266DC00B22859 /* OctoConnection.swift */; };
 		808AA1C11F23D521000853C8 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808AA1C01F23D521000853C8 /* TemperatureViewController.swift */; };
+		80B140BA1F23E2DD00957006 /* ToolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B140B91F23E2DD00957006 /* ToolCell.swift */; };
+		80B140BC1F23F95D00957006 /* FilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B140BB1F23F95D00957006 /* FilesCell.swift */; };
 		80B838A81F1EEEC900F90A13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838A71F1EEEC900F90A13 /* AppDelegate.swift */; };
-		80B838AA1F1EEEC900F90A13 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838A91F1EEEC900F90A13 /* DashboardViewController.swift */; };
 		80B838AC1F1EEEC900F90A13 /* FileBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838AB1F1EEEC900F90A13 /* FileBrowserViewController.swift */; };
-		80B838AF1F1EEEC900F90A13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80B838AD1F1EEEC900F90A13 /* Main.storyboard */; };
+		80B838AF1F1EEEC900F90A13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80B838AD1F1EEEC900F90A13 /* Main.storyboard */; settings = {ASSET_TAGS = (0, ); }; };
 		80B838B11F1EEEC900F90A13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B838B01F1EEEC900F90A13 /* Assets.xcassets */; };
 		80B838B41F1EEEC900F90A13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80B838B21F1EEEC900F90A13 /* LaunchScreen.storyboard */; };
 		80B838BC1F1EEF7500F90A13 /* Octoprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838BB1F1EEF7500F90A13 /* Octoprint.swift */; };
@@ -97,9 +98,10 @@
 		8018558E1F21D86500B22859 /* SwiftWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftWebSocket.xcodeproj; path = ../SwiftWebSocket/SwiftWebSocket.xcodeproj; sourceTree = "<group>"; };
 		801855A71F2266DC00B22859 /* OctoConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctoConnection.swift; sourceTree = "<group>"; };
 		808AA1C01F23D521000853C8 /* TemperatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
+		80B140B91F23E2DD00957006 /* ToolCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolCell.swift; sourceTree = "<group>"; };
+		80B140BB1F23F95D00957006 /* FilesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesCell.swift; sourceTree = "<group>"; };
 		80B838A41F1EEEC900F90A13 /* octo-tap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "octo-tap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80B838A71F1EEEC900F90A13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		80B838A91F1EEEC900F90A13 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		80B838AB1F1EEEC900F90A13 /* FileBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBrowserViewController.swift; sourceTree = "<group>"; };
 		80B838AE1F1EEEC900F90A13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		80B838B01F1EEEC900F90A13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -177,12 +179,13 @@
 		80B838EF1F1FAF2C00F90A13 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				80B838E91F1F069F00F90A13 /* SetupViewController.swift */,
-				80B838AB1F1EEEC900F90A13 /* FileBrowserViewController.swift */,
-				80B838A91F1EEEC900F90A13 /* DashboardViewController.swift */,
 				80B838F21F1FB0C800F90A13 /* RootViewController.swift */,
 				80B838FB1F1FBA9900F90A13 /* SetupNavigationViewController.swift */,
+				80B838E91F1F069F00F90A13 /* SetupViewController.swift */,
+				80B838AB1F1EEEC900F90A13 /* FileBrowserViewController.swift */,
 				808AA1C01F23D521000853C8 /* TemperatureViewController.swift */,
+				80B140BB1F23F95D00957006 /* FilesCell.swift */,
+				80B140B91F23E2DD00957006 /* ToolCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -241,6 +244,9 @@
 		80B8389C1F1EEEC900F90A13 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					0,
+				);
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Lukas Valine";
@@ -343,11 +349,12 @@
 				80B838AC1F1EEEC900F90A13 /* FileBrowserViewController.swift in Sources */,
 				80B838A81F1EEEC900F90A13 /* AppDelegate.swift in Sources */,
 				80B838FE1F1FC08200F90A13 /* TextInpuCellTableViewCell.swift in Sources */,
-				80B838AA1F1EEEC900F90A13 /* DashboardViewController.swift in Sources */,
+				80B140BA1F23E2DD00957006 /* ToolCell.swift in Sources */,
 				808AA1C11F23D521000853C8 /* TemperatureViewController.swift in Sources */,
 				801855A81F2266DC00B22859 /* OctoConnection.swift in Sources */,
 				80B838EA1F1F069F00F90A13 /* SetupViewController.swift in Sources */,
 				80B838FC1F1FBA9900F90A13 /* SetupNavigationViewController.swift in Sources */,
+				80B140BC1F23F95D00957006 /* FilesCell.swift in Sources */,
 				80B838F31F1FB0C800F90A13 /* RootViewController.swift in Sources */,
 				80B838EE1F1F113E00F90A13 /* Storyboard.swift in Sources */,
 			);
