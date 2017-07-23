@@ -28,6 +28,13 @@ class OctoWebSockets {
 		socket?.event.open = {
 			print("OctoPrint socket opened singleton")
 		}
+		
+		socket?.event.close = {error in
+			print("socket error, trying again")
+			self.socket?.event.open = {
+				print("OctoPrint socket opened singleton")
+			}
+		}
 	
 		socket?.event.message = { message in
 			if let jsonString = message as? String {
@@ -41,7 +48,9 @@ class OctoWebSockets {
 								if current?.current != nil {
 									if (current?.current?.temps?.count)! > 0{
 										DispatchQueue.main.async(){
-											self.delegate?.temperatureUpdate(temp: (current?.current?.temps)!)
+											if let unwrappedTemp = (current?.current?.temps) {
+												self.delegate?.temperatureUpdate(temp: unwrappedTemp)
+											}
 										}
 									}
 								}

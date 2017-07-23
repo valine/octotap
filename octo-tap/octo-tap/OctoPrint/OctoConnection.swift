@@ -165,16 +165,16 @@ struct OctoFiles {
 					gcodeAnalysis.estimatedPrintTime = jsonGcodeAnalysis["estimatedPrintTime"] as? Int
 				}
 				
-				var print = File.Print(failure: nil, success: nil, last: nil)
+				var printO = File.Print(failure: nil, success: nil, last: nil)
 				
-				if let printJson = json["print"] as? [String: Any] {
+				if let printJson = jsonFile["prints"] as? [String: Any] {
 				
 					let lastJson = printJson["last"] as! [String: Any]
 					let last = File.Print.Last(date: lastJson["date"] as? Int64, success: lastJson["success"] as? Bool)
-					print = File.Print(
-						failure: printJson["failure"] as? Int,
-						success: printJson["success"] as? Int,
-						last: last)
+					printO.failure = printJson["failure"] as? Int
+					printO.success = printJson["success"] as? Int
+					printO.last = last
+						
 				}
 				
 				var file = File(name: nil,
@@ -187,7 +187,7 @@ struct OctoFiles {
 							 origin: nil,
 							 ref: ref,
 							 gcodeAnalysis: gcodeAnalysis,
-							 print: print)
+							 print: printO)
 				
 				if let name =  jsonFile["name"] as? String {
 					file.name = name

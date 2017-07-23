@@ -19,6 +19,10 @@ class ToolCell: UITableViewCell {
 	@IBOutlet weak var targetTemperature: UITextField!
 	@IBOutlet weak var actualTemperature: UILabel!
 	
+	@IBOutlet weak var displayMoreBar: UIView!
+	@IBOutlet weak var displayDetails: UIView!
+	
+	@IBOutlet weak var displayMoreDots: UIImageView!
 	@IBOutlet weak var toolNameLabel: UILabel!
 	@IBOutlet weak var currentTempLabel: UILabel!
 	override func awakeFromNib() {
@@ -26,6 +30,10 @@ class ToolCell: UITableViewCell {
         // Initialization code
 		extrudeButton.layer.cornerRadius = extrudeButton.frame.width / 2
 		retractButton.layer.cornerRadius = extrudeButton.frame.width / 2
+		
+		targetTemperature.layer.cornerRadius = 10
+		targetTemperature.layer.borderWidth = 1.5
+		targetTemperature.layer.borderColor = Constants.Colors.ashGrey.cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -37,6 +45,8 @@ class ToolCell: UITableViewCell {
 	func hideExtruderControls() {
 		extrudeButton.isHidden = true
 		retractButton.isHidden = true
+		displayMoreDots.isHidden = true
+		displayMoreBar.backgroundColor = Constants.Colors.almostBlack
 	}
 
 }

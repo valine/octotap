@@ -52,7 +52,20 @@ class FileBrowserViewController: UIViewController, UITableViewDataSource, UITabl
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell:FilesCell = self.filesTableView.dequeueReusableCell(withIdentifier: Constants.TabelCellResuseIDs.filesCell.rawValue) as! FilesCell!
 		
-		cell.nameLabel.text = files?.files[indexPath.item].name
+		let file = files?.files[indexPath.item]
+		cell.nameLabel.text = file?.name
+		
+		
+		if let success = file?.print?.last?.success {
+			if success {
+				cell.nameLabel.textColor = Constants.Colors.octotapGreen
+			} else {
+				cell.nameLabel.textColor = Constants.Colors.errorRed
+			}
+		} else {
+			cell.nameLabel.textColor = .white
+		}
+		
 	
 		return cell
 	}

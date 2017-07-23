@@ -15,8 +15,9 @@ import UIKit
 class TemperatureViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, OctoPrintDelegate {
 	
 	@IBOutlet weak var toolTableView: UITableView!
-	
+
 	var temperatures:Array<OctoWSFrame.Temp>?
+	var cellsOpen =  Array(repeating: Constants.Dimensions.cellClosedHeight, count: 3)
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -33,7 +34,10 @@ class TemperatureViewController: UIViewController, UITableViewDelegate, UITableV
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		let cellHeight: CGFloat = 118
+		var cellHeight: CGFloat = 118
+
+		cellHeight = cellsOpen[indexPath.item]
+		
 		return cellHeight;
 	}
 	
@@ -45,6 +49,10 @@ class TemperatureViewController: UIViewController, UITableViewDelegate, UITableV
 			cell.toolNameLabel.text = Constants.Strings.bedToolName
 		} else {
 			cell.toolNameLabel.text = "\(Constants.Strings.toolName) \(indexPath.item)"
+			let tap = UILongPressGestureRecognizer(target: self, action: #selector(tapHandler))
+			tap.minimumPressDuration = 0
+			cell.displayDetails.tag = indexPath.item
+			cell.displayDetails.addGestureRecognizer(tap)
 		}
 
 		if let temperaturesSet = temperatures {
@@ -63,9 +71,45 @@ class TemperatureViewController: UIViewController, UITableViewDelegate, UITableV
 		return cell
 	}
 	
+	func tapHandler(gesture: UITapGestureRecognizer) {
+		
+		let tag = gesture.view?.tag
+		if  gesture.state == .ended {
+			
+			let expandedHeight: CGFloat = Constants.Dimensions.cellOpenHeight
+			toolTableView.beginUpdates()
+			
+			if cellsOpen[tag!] == expandedHeight {
+				cellsOpen[tag!] = Constants.Dimensions.cellClosedHeight
+			} else {
+				cellsOpen[tag!] = Constants.Dimensions.cellOpenHeight
+			}
+			
+			toolTableView.endUpdates()
+		}
+	}
+	
+	func refresh() {
+		
+		if let temperaturesSet = temperatures {
+			
+			if let tool0 = toolTableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? ToolCell {
+				tool0.actualTemperature.text = "\((temperaturesSet[0].tool0!.actual)!)°C"
+			}
+			
+			if let tool1 = toolTableView.cellForRow(at: IndexPath(item: 1, section: 0)) as? ToolCell {
+				tool1.actualTemperature.text = "\((temperaturesSet[0].tool1!.actual)!)°C"
+			}
+			
+			if let bed = toolTableView.cellForRow(at: IndexPath(item: 2, section: 0)) as? ToolCell {
+				bed.actualTemperature.text = "\((temperaturesSet[0].bed!.actual)!)°C"
+			}
+		}
+	}
+
 	func temperatureUpdate(temp: Array<OctoWSFrame.Temp>) {
 		temperatures = temp
-		toolTableView.reloadData()
+		refresh()
 		
 	}
 	

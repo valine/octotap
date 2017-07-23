@@ -49,6 +49,9 @@ class SetupViewController : UITableViewController, UITextFieldDelegate {
 					UserDefaults.standard.set(keyString, forKey: Constants.Server.apiKey.rawValue)
 					self.serverAddressInput.resignFirstResponder()
 					
+					let octoprintWs = OctoWebSockets.instance
+					octoprintWs.openSocket(address: validURL)
+
 					self.dismiss(animated: true, completion: nil)
 				}
 			})
