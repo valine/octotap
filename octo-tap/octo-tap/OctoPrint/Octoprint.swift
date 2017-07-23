@@ -17,6 +17,7 @@ class Octoprint {
 	
 	typealias OctoPrintResponse = (Data?, Error?) -> Void
 	typealias StringResponse = (String?, Error?) -> Void
+	typealias FilesResponse = (OctoFiles?, Error?) -> Void
 	
 	func getUIApiKey(address: URL, completion : @escaping StringResponse) {
 		
@@ -44,17 +45,13 @@ class Octoprint {
 						if let successfulConnection = connection {
 							print((successfulConnection.connected.apikey))
 							completion((successfulConnection.connected.apikey), nil)
-
 						}
-					//socket.close()
 					}
 				} catch {
 					
-					
 				}
 			}
-				// created a TODO object
-				
+			
 				
 // Swift 4 is so much better
 //			if let jsonString = message as? String {
@@ -73,16 +70,27 @@ class Octoprint {
 		}
 	}
 	
-	func getFiles(address: URL, apiKey: String, completion : @escaping StringResponse) {
+	func getFiles(address: URL, apiKey: String, completion : @escaping FilesResponse) {
 		var request = URLRequest(url: address.appendingPathComponent("api/files"))
 		request.addValue(apiKey, forHTTPHeaderField: "X-Api-Key")
 		let session = URLSession.shared
 		let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
 			
 			if let retrievedData = data {
-				let response = String(data: retrievedData, encoding: String.Encoding.utf8) as String!
-				DispatchQueue.main.async(){
-					completion(response, error)
+				do {
+					if let returnedJSON = try JSONSerialization.jsonObject(with: retrievedData, options: []) as? [String: Any] {
+						let files = OctoFiles(json: returnedJSON)
+							
+						if let parsedFiles = files {
+							print(parsedFiles.files[1].name)
+							
+							DispatchQueue.main.async(){
+								completion(parsedFiles, error)
+							}
+						}
+					}
+				} catch {
+					
 				}
 			} else {
 				DispatchQueue.main.async(){

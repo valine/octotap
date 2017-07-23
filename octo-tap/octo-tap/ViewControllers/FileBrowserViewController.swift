@@ -16,16 +16,37 @@ class FileBrowserViewController: UIViewController, UITableViewDataSource, UITabl
 	
 	@IBOutlet weak var filesTableView: UITableView!
 	
+	var files: OctoFiles?
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		filesTableView.delegate = self
 		filesTableView.dataSource = self
 		filesTableView.separatorColor = Constants.Colors.almostBlack
+		
+		
+		
+		let apiKey = UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
+		let serverAddress = UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)
+		
+		let octoPrint = Octoprint()
+		
+		octoPrint.getFiles(address: URL(string: (serverAddress?.withHttp())!)!, apiKey: apiKey!, completion: {(files: OctoFiles?, error: Error?) -> Void in
+			self.files = files
+			self.filesTableView.reloadData()
+		})
+		
+		
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		//TODO pull number of tools
-		return 3
+		
+		if let filesCount  =  (files?.files.count) {
+			return filesCount
+		}
+		
+		return 1
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

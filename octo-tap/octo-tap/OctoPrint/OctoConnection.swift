@@ -65,62 +65,7 @@ struct OctoConnection {
 	var connected: Connected
 }
 
-struct OctoFiles {
-	
-	init?(json: [String: Any]) {
-		
-		
-		
-	}
-	
-	var files: Array<File>
-	var free: Int
-	
-	struct File {
-		
-		var name: String
-		var path: String
-		var type: String
-		var typePath: Array<String>
-		var hash: String
-		var size: String
-		var date: String
-		var origin: String
-		var ref: Ref
-		var gcodeAnalysis: GCodeAnalysis
-		var print: Print
-		
-		struct Ref {
-			var resource: String
-			var download: String
-		}
-		
-		struct GCodeAnalysis {
-			var estimatedPrintTime: Int
-			var filament: Filament
-			
-			struct Filament {
-				var length: Int
-				var volume: Float
-			}
-		}
-		
-		struct Print {
-			var failure: Int
-			var success: Int
-			var last: Last
-			
-			struct Last {
-				var date: Int64
-				var success: Bool
-			}
-		}
 
-
-	}
-	
-	
-	
 //	{
 //	"files": [
 //	{
@@ -173,9 +118,161 @@ struct OctoFiles {
 //	],
 //	"free": "3.2GB"
 //	}
-//	
+//
+
+struct OctoFiles {
+	
+	init?(json: [String: Any]) {
+		
+		files = [File]()
+		
+		if let jsonFiles = json["files"] as? Array<[String: Any]> {
+			
+			for jsonFile in jsonFiles{
+				
+				var ref: File.Ref = File.Ref(resource: nil, download: nil)
+				
+				if let jsonRef = jsonFile["refs"] as? [String: Any] {
+					
+					if let resource = jsonRef["resource"] as? String {
+						ref.resource = resource
+					}
+					
+					if let download = jsonRef["download"] as? String {
+						ref.download = download
+					}
+				}
+				
+				
+				
+				var filament = File.GCodeAnalysis.Filament(
+					length: nil,
+					volume: nil)
+				
+				
+				var gcodeAnalysis = File.GCodeAnalysis(estimatedPrintTime: nil, filament: filament)
+				
+				if let jsonGcodeAnalysis = jsonFile["gcodeAnalysis"] as? [String: Any] {
+					
+					let jsonFilament = jsonGcodeAnalysis["filament"] as! [String: Any]
+					
+					if let length = jsonFilament["length"] as? Int {
+						filament.length = length
+					}
+					
+					if let volume = jsonFilament["volume"] as? Float {
+						filament.volume = volume
+					}
+					
+					gcodeAnalysis.estimatedPrintTime = jsonGcodeAnalysis["estimatedPrintTime"] as? Int
+				}
+				
+			
+				
+				var print = File.Print(failure: nil, success: nil, last: nil)
+				
+				if let printJson = json["print"] as? [String: Any] {
+				
+					let lastJson = printJson["last"] as! [String: Any]
+					let last = File.Print.Last(date: lastJson["date"] as? Int64, success: lastJson["success"] as? Bool)
+					print = File.Print(
+						failure: printJson["failure"] as? Int,
+						success: printJson["success"] as? Int,
+						last: last)
+				}
+				
+				var file = File(name: nil,
+							 path: nil,
+							 type: nil,
+							 typePath: nil,
+							 hash: nil,
+							 size: nil,
+							 date: nil,
+							 origin: nil,
+							 ref: ref,
+							 gcodeAnalysis: gcodeAnalysis,
+							 print: print)
+				
+				if let name =  jsonFile["name"] as? String {
+					file.name = name
+				}
+				
+				if let path = jsonFile["path"] as? String {
+					file.path = path
+				}
+				
+				if let type = jsonFile["type"] as? String {
+					file.type = type
+				}
+				
+				if let hash = jsonFile["hash"] as? String {
+					file.hash = hash
+				}
+				
+				if let size = jsonFile["size"] as? Int {
+					file.size = size
+				}
+				
+				if let date = jsonFile["date"] as? Int64 {
+					file.date = date
+				}
+				
+				if let origin = jsonFile["origin"] as? String {
+					file.origin = origin
+				}
+				
+				files.append(file)
+			}
+		}
 	
 	
+		free = json["free"] as! Int
+		
+	}
+	
+	var files: Array<File>
+	var free: Int?
+	
+	struct File {
+		
+		var name: String?
+		var path: String?
+		var type: String?
+		var typePath: Array<String>?
+		var hash: String?
+		var size: Int?
+		var date: Int64?
+		var origin: String?
+		var ref: Ref?
+		var gcodeAnalysis: GCodeAnalysis?
+		var print: Print?
+		
+		struct Ref {
+			var resource: String?
+			var download: String?
+		}
+		
+		struct GCodeAnalysis {
+			var estimatedPrintTime: Int?
+			var filament: Filament?
+			
+			struct Filament {
+				var length: Int?
+				var volume: Float?
+			}
+		}
+		
+		struct Print {
+			var failure: Int?
+			var success: Int?
+			var last: Last?
+			
+			struct Last {
+				var date: Int64?
+				var success: Bool?
+			}
+		}
+	}
 	
 }
 
