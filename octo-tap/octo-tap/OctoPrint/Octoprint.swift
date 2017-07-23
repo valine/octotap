@@ -34,19 +34,42 @@ class Octoprint {
 		}
 		
 		socket.event.message = { message in
+			
 			if let jsonString = message as? String {
-				let decoder = JSONDecoder()
 				do {
-					let connection = try decoder.decode(OctoConnection.self, from: jsonString.data(using: .utf8)!)
-					print(connection.connected.apikey)
-					socket.close()
-					DispatchQueue.main.async(){
-						completion(connection.connected.apikey, nil)
+					if let returnedJSON = try JSONSerialization.jsonObject(with:  jsonString.data(using: .utf8)!, options: []) as? [String: Any] {
+						
+						let connection = OctoConnection(json: returnedJSON)
+						
+						if let successfulConnection = connection {
+							print((successfulConnection.connected.apikey))
+							completion((successfulConnection.connected.apikey), nil)
+
+						}
+					//socket.close()
 					}
 				} catch {
-					print("failed")
+					
+					
 				}
 			}
+				// created a TODO object
+				
+				
+// Swift 4 is so much better
+//			if let jsonString = message as? String {
+//				let decoder = JSONDecoder()
+//				do {
+//					let connection = try decoder.decode(OctoConnection.self, from: jsonString.data(using: .utf8)!)
+//					print(connection.connected.apikey)
+//					socket.close()
+//					DispatchQueue.main.async(){
+//						completion(connection.connected.apikey, nil)
+//					}
+//				} catch {
+//					print("failed")
+//				}
+//			}
 		}
 	}
 	

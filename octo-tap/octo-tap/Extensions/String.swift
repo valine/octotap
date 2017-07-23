@@ -21,18 +21,34 @@ extension String {
 		return "http://\(self)"
 	}
 	
+	// SWIFT 4.0
+//	func webSocketAddr() -> String {
+//		if(self.hasPrefix("http://") || self.hasPrefix("https://")) {
+//			return "ws\(self.substring(from: self.index(of: ":")!))"
+//		}  else if (self.hasPrefix("ws://")) {
+//			return self
+//		} else {
+//			return "ws://\(self)"
+//		}
+//	}
+	
+
+	// SWIFT 3.0
 	func webSocketAddr() -> String {
+		if self.hasPrefix("http://") {
+			let index = self.index(self.startIndex, offsetBy: 4)
+			return "ws\(self.substring(from: index))"
+
+		}  else if  self.hasPrefix("https://"){
+			let index = self.index(self.startIndex, offsetBy: 5)
+			return "ws\(self.substring(from: index))"
 		
-		if(self.hasPrefix("http://") || self.hasPrefix("https://")) {
-			return "ws\(self.substring(from: self.index(of: ":")!))"
-			
-		}  else if (self.hasPrefix("ws://")) {
+		}else if (self.hasPrefix("ws://")) {
 			return self
-			
+
 		} else {
 			return "ws://\(self)"
 		}
-		
 	}
 	
 }
