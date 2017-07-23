@@ -94,15 +94,36 @@ class TemperatureViewController: UIViewController, UITableViewDelegate, UITableV
 		if let temperaturesSet = temperatures {
 			
 			if let tool0 = toolTableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? ToolCell {
+				
 				tool0.actualTemperature.text = "\((temperaturesSet[0].tool0!.actual)!)°C"
+				
+				if (temperaturesSet[0].tool0!.target)! == 0 {
+					tool0.targetTemperature.placeholder = "Off"
+				} else {
+					tool0.targetTemperature.placeholder = "\((temperaturesSet[0].tool0!.target)!)°C"
+				}
 			}
 			
 			if let tool1 = toolTableView.cellForRow(at: IndexPath(item: 1, section: 0)) as? ToolCell {
 				tool1.actualTemperature.text = "\((temperaturesSet[0].tool1!.actual)!)°C"
+				
+				if (temperaturesSet[0].tool1!.target)! == 0 {
+					tool1.targetTemperature.placeholder = "Off"
+				} else {
+					tool1.targetTemperature.placeholder = "\((temperaturesSet[0].tool1!.target)!)°C"
+				}
+
 			}
 			
 			if let bed = toolTableView.cellForRow(at: IndexPath(item: 2, section: 0)) as? ToolCell {
 				bed.actualTemperature.text = "\((temperaturesSet[0].bed!.actual)!)°C"
+				
+				
+				if (temperaturesSet[0].bed!.target)! == 0 {
+					bed.targetTemperature.placeholder = "Off"
+				} else {
+					bed.targetTemperature.placeholder = "\((temperaturesSet[0].bed!.target)!)°C"
+				}
 			}
 		}
 	}

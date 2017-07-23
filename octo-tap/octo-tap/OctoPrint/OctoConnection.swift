@@ -402,6 +402,89 @@ struct OctoWSFrame {
 //}
 
 
+struct OctoSettings {
+	
+	var webcam = Webcam(bitrate: nil, ffmpegPath: nil, ffmpegThreads: nil, flipH: nil, flipV: nil, rotate90: nil, snapshotUrl: nil, streamRatio: nil, streamUrl: nil, watermark: nil)
+	
+	
+	init?(json: [String: Any]) {
+
+		if let jWebcam = json["webcam"] as? [String: Any] {
+			if let bitrate = jWebcam["bitrate"] as? String {
+				webcam.bitrate = bitrate
+			}
+			
+			if let ffmpegPath = jWebcam["ffmpegPath"] as? String {
+				webcam.ffmpegPath = ffmpegPath
+			}
+			
+			if let ffmpegThreads = jWebcam["ffmpegThreads"] as? Int {
+				webcam.ffmpegThreads = ffmpegThreads
+			}
+			
+			if let flipH = jWebcam["flipH"] as? Bool {
+				webcam.flipH = flipH
+			}
+			
+			if let flipV = jWebcam["flipV"] as? Bool {
+				webcam.flipV = flipV
+			}
+			
+			if let rotate90 = jWebcam["rotate90"] as? Bool {
+				webcam.rotate90 = rotate90
+			}
+			
+			if let snapshotUrl = jWebcam["snapshotUrl"] as? String {
+				webcam.snapshotUrl = snapshotUrl
+			}
+			
+			if let streamRatio = jWebcam["streamRatio"] as? String {
+				webcam.streamRatio = streamRatio
+			}
+			
+			if let streamUrl = jWebcam["streamUrl"] as? String {
+				webcam.streamUrl = streamUrl
+			}
+			
+			if let watermark = jWebcam["watermark"] as? Bool {
+				webcam.watermark = watermark
+			}
+		}
+	}
+	
+	
+	struct Webcam {
+		var bitrate: String?
+		var ffmpegPath: String?
+		var ffmpegThreads: Int?
+		var flipH: Bool?
+		var flipV: Bool?
+		var rotate90: Bool?
+		var snapshotUrl: String?
+		var streamRatio: String?
+		var streamUrl: String?
+		var watermark: Bool?
+	}
+	
+	
+}
+
+
+//
+//"webcam": {
+//	"bitrate": "5000k",
+//	"ffmpegPath": "/usr/bin/avconv",
+//	"ffmpegThreads": 1,
+//	"flipH": false,
+//	"flipV": false,
+//	"rotate90": false,
+//	"snapshotUrl": "http://127.0.0.1:8080/?action=snapshot",
+//	"streamRatio": "16:9",
+//	"streamUrl": "http://10.0.1.92:8080/?action=stream",
+//	"watermark": false
+//}
+
+
 
 
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8012AE7B1F25349F00FB5F68 /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012AE7A1F25349F00FB5F68 /* ControlViewController.swift */; };
+		8012AE9B1F25432800FB5F68 /* MjpegStreamingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8012AE9A1F25431F00FB5F68 /* MjpegStreamingKit.framework */; };
+		8012AE9C1F25432800FB5F68 /* MjpegStreamingKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8012AE9A1F25431F00FB5F68 /* MjpegStreamingKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		801855A31F21D87600B22859 /* SwiftWebSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801855981F21D86600B22859 /* SwiftWebSocket.framework */; };
 		801855A41F21D87600B22859 /* SwiftWebSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 801855981F21D86600B22859 /* SwiftWebSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		801855A81F2266DC00B22859 /* OctoConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801855A71F2266DC00B22859 /* OctoConnection.swift */; };
@@ -30,6 +33,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8012AE991F25431F00FB5F68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8012AE951F25431F00FB5F68 /* MjpegStreamingKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1A2AEA0C1CA9A43A0047FC82;
+			remoteInfo = MjpegStreamingKit;
+		};
+		8012AE9D1F25432800FB5F68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8012AE951F25431F00FB5F68 /* MjpegStreamingKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A2AEA0B1CA9A43A0047FC82;
+			remoteInfo = MjpegStreamingKit;
+		};
 		801855971F21D86600B22859 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8018558E1F21D86500B22859 /* SwiftWebSocket.xcodeproj */;
@@ -88,6 +105,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				8012AE9C1F25432800FB5F68 /* MjpegStreamingKit.framework in Embed Frameworks */,
 				801855A41F21D87600B22859 /* SwiftWebSocket.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -96,6 +114,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8012AE7A1F25349F00FB5F68 /* ControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
+		8012AE951F25431F00FB5F68 /* MjpegStreamingKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MjpegStreamingKit.xcodeproj; path = ../MjpegStreamingKit/MjpegStreamingKit.xcodeproj; sourceTree = "<group>"; };
 		8018558E1F21D86500B22859 /* SwiftWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftWebSocket.xcodeproj; path = ../SwiftWebSocket/SwiftWebSocket.xcodeproj; sourceTree = "<group>"; };
 		801855A71F2266DC00B22859 /* OctoConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctoConnection.swift; sourceTree = "<group>"; };
 		808AA1C01F23D521000853C8 /* TemperatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8012AE9B1F25432800FB5F68 /* MjpegStreamingKit.framework in Frameworks */,
 				801855A31F21D87600B22859 /* SwiftWebSocket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +152,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8012AE961F25431F00FB5F68 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8012AE9A1F25431F00FB5F68 /* MjpegStreamingKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8018558F1F21D86500B22859 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +178,7 @@
 			children = (
 				80B838A61F1EEEC900F90A13 /* octo-tap */,
 				80B838A51F1EEEC900F90A13 /* Products */,
+				8012AE951F25431F00FB5F68 /* MjpegStreamingKit.xcodeproj */,
 				8018558E1F21D86500B22859 /* SwiftWebSocket.xcodeproj */,
 			);
 			sourceTree = "<group>";
@@ -188,6 +218,7 @@
 				808AA1C01F23D521000853C8 /* TemperatureViewController.swift */,
 				80B140BB1F23F95D00957006 /* FilesCell.swift */,
 				80B140B91F23E2DD00957006 /* ToolCell.swift */,
+				8012AE7A1F25349F00FB5F68 /* ControlViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -235,6 +266,7 @@
 			);
 			dependencies = (
 				801855A61F21D87600B22859 /* PBXTargetDependency */,
+				8012AE9E1F25432800FB5F68 /* PBXTargetDependency */,
 			);
 			name = "octo-tap";
 			productName = "octo-tap";
@@ -272,6 +304,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 8012AE961F25431F00FB5F68 /* Products */;
+					ProjectRef = 8012AE951F25431F00FB5F68 /* MjpegStreamingKit.xcodeproj */;
+				},
+				{
 					ProductGroup = 8018558F1F21D86500B22859 /* Products */;
 					ProjectRef = 8018558E1F21D86500B22859 /* SwiftWebSocket.xcodeproj */;
 				},
@@ -284,6 +320,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		8012AE9A1F25431F00FB5F68 /* MjpegStreamingKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MjpegStreamingKit.framework;
+			remoteRef = 8012AE991F25431F00FB5F68 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		801855981F21D86600B22859 /* SwiftWebSocket.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -352,6 +395,7 @@
 				808D26021F247B7E008555BC /* OctoWebSockets.swift in Sources */,
 				80B838AC1F1EEEC900F90A13 /* FileBrowserViewController.swift in Sources */,
 				80B838A81F1EEEC900F90A13 /* AppDelegate.swift in Sources */,
+				8012AE7B1F25349F00FB5F68 /* ControlViewController.swift in Sources */,
 				80B838FE1F1FC08200F90A13 /* TextInpuCellTableViewCell.swift in Sources */,
 				80B140BA1F23E2DD00957006 /* ToolCell.swift in Sources */,
 				808AA1C11F23D521000853C8 /* TemperatureViewController.swift in Sources */,
@@ -367,6 +411,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8012AE9E1F25432800FB5F68 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MjpegStreamingKit;
+			targetProxy = 8012AE9D1F25432800FB5F68 /* PBXContainerItemProxy */;
+		};
 		801855A61F21D87600B22859 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "SwiftWebSocket-iOS";
@@ -504,12 +553,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6KLWRX98B4;
 				INFOPLIST_FILE = "octo-tap/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.valine.octo-tap";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -520,12 +569,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6KLWRX98B4;
 				INFOPLIST_FILE = "octo-tap/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.valine.octo-tap";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -17,6 +17,7 @@ class Octoprint {
 	
 	typealias OctoPrintResponse = (Data?, Error?) -> Void
 	typealias StringResponse = (String?, Error?) -> Void
+	typealias SettingsResponse = (OctoSettings?, Error?) -> Void
 	typealias FilesResponse = (OctoFiles?, Error?) -> Void
 	typealias TemperatureResponse = (Array<OctoWSFrame.Temp>?, Error?) -> Void
 	
@@ -86,6 +87,37 @@ class Octoprint {
 							
 						if let parsedFiles = files {
 
+							DispatchQueue.main.async(){
+								completion(parsedFiles, error)
+							}
+						}
+					}
+				} catch {
+					
+				}
+			} else {
+				DispatchQueue.main.async(){
+					completion(nil, error)
+				}
+			}
+		})
+		
+		task.resume()
+	}
+	
+	func getSettings(address: URL, apiKey: String, completion : @escaping SettingsResponse) {
+		var request = URLRequest(url: address.appendingPathComponent("api/settings"))
+		request.addValue(apiKey, forHTTPHeaderField: "X-Api-Key")
+		let session = URLSession.shared
+		let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
+			
+			if let retrievedData = data {
+				do {
+					if let returnedJSON = try JSONSerialization.jsonObject(with: retrievedData, options: []) as? [String: Any] {
+						let files = OctoSettings(json: returnedJSON)
+						
+						if let parsedFiles = files {
+							
 							DispatchQueue.main.async(){
 								completion(parsedFiles, error)
 							}

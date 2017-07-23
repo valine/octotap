@@ -17,6 +17,7 @@ struct Constants {
 	enum Server : String {
 		case apiKey
 		case address
+		case streamUrl 
 	}
 	
 	enum Printer {
