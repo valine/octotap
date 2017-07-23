@@ -485,6 +485,78 @@ struct OctoSettings {
 //}
 
 
+struct ToolTemp {
+	
+	var command: String?
+	var targets: Targets?
+	
+	struct Targets {
+		var tool0: Float?
+		var tool1: Float?
+		var bed: Float?
+	}
+	func toJSON() -> [String: Any]{
+		var json = [String: Any]()
+		
+		if let unwrappedCommand = command {
+			json["command"] = unwrappedCommand
+		}
+		
+		if let unwrappedTargets = targets {
+			var targetsJson = [String: Any]()
+			
+			if let unwrappedTool0 = unwrappedTargets.tool0 {
+				targetsJson["tool0"] = unwrappedTool0
+			}
+			
+			if let unwrappedTool1 = unwrappedTargets.tool1 {
+				targetsJson["tool1"] = unwrappedTool1
+			}
+
+			json["targets"] = targetsJson
+		}
+	
+		return json
+	}
+}
+
+
+struct BedTemp {
+	
+	var command: String?
+	var target: Float?
+	
+	func toJSON() -> [String: Any]{
+		var json = [String: Any]()
+		
+		if let unwrappedCommand = command {
+			json["command"] = unwrappedCommand
+		}
+			
+		if let unwrappedBed = target {
+			json["target"] = unwrappedBed
+		}
+		
+		return json
+	}
+}
+
+
+
+
+//
+//	POST /api/printer/tool HTTP/1.1
+//	Host: example.com
+//	Content-Type: application/json
+//	X-Api-Key: abcdef...
+//
+//	{
+//	"command": "target",
+//	"targets": {
+//	"tool0": 220,
+//	"tool1": 205
+//	}
+//	}
 
 
 

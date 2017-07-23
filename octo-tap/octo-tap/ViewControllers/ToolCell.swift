@@ -13,6 +13,8 @@
 import UIKit
 
 class ToolCell: UITableViewCell {
+	
+	var item: Int? 
 	@IBOutlet weak var extrudeButton: UIButton!
 	@IBOutlet weak var retractButton: UIButton!
 		
@@ -74,17 +76,80 @@ class ToolCell: UITableViewCell {
 		
 		doneToolbar.items = items
 		doneToolbar.sizeToFit()
-		
 		self.targetTemperature.inputAccessoryView = doneToolbar
 	}
 	
 	func doneButtonAction() {
+		if targetTemperature.text != "" {
+			var tempsToSend = ToolTemp(command: "target", targets: nil)
+			let value = Float(targetTemperature.text!)
+			let octoprint = Octoprint()
+			
+			if let unwrappedItem = item {
+				switch unwrappedItem {
+				case 0:
+					let targets = ToolTemp.Targets(tool0: value, tool1: nil, bed: nil)
+					tempsToSend.targets = targets
+					octoprint.setTargetToolTemp(temps: tempsToSend, completion: {(data: Data?, error: Error?) in
+						self.targetTemperature.text = ""
+					})
+					
+				case 1:
+					let targets = ToolTemp.Targets(tool0: nil, tool1: value, bed: nil)
+					tempsToSend.targets = targets
+					octoprint.setTargetToolTemp(temps: tempsToSend, completion: {(data: Data?, error: Error?) in
+						self.targetTemperature.text = ""
+					})
+					
+				case 2:
+					let bedTempToSend = BedTemp(command: "target", target: value)
+					
+					octoprint.setTargetBedTemp(temps: bedTempToSend, completion: {(data: Data?, error: Error?) in
+						self.targetTemperature.text = ""
+					})
+				default:
+					print("error sending temp")
+				}
+			}
+		}
+		
 		self.targetTemperature.resignFirstResponder()
 	}
 	
 	func offButtonAction() {
-		self.targetTemperature.text = "0"
+		self.targetTemperature.text = ""
 		self.targetTemperature.resignFirstResponder()
+		
+		var tempsToSend = ToolTemp(command: "target", targets: nil)
+		let octoprint = Octoprint()
+		
+		if let unwrappedItem = item {
+			switch unwrappedItem {
+			case 0:
+				let targets = ToolTemp.Targets(tool0: 0, tool1: nil, bed: nil)
+				tempsToSend.targets = targets
+				octoprint.setTargetToolTemp(temps: tempsToSend, completion: {(data: Data?, error: Error?) in
+					self.targetTemperature.text = ""
+				})
+				
+			case 1:
+				let targets = ToolTemp.Targets(tool0: nil, tool1: 0, bed: nil)
+				tempsToSend.targets = targets
+				octoprint.setTargetToolTemp(temps: tempsToSend, completion: {(data: Data?, error: Error?) in
+					self.targetTemperature.text = ""
+				})
+				
+			case 2:
+				let bedTempToSend = BedTemp(command: "target", target: 0)
+				
+				octoprint.setTargetBedTemp(temps: bedTempToSend, completion: {(data: Data?, error: Error?) in
+					self.targetTemperature.text = ""
+				})
+			default:
+				print("error sending temp")
+			}
+		}
+
 	}
 
 	

@@ -18,7 +18,7 @@ class TemperatureViewController: UIViewController, UITableViewDelegate, UITableV
 
 	var temperatures:Array<OctoWSFrame.Temp>?
 	var cellsOpen =  Array(repeating: Constants.Dimensions.cellClosedHeight, count: 3)
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		toolTableView.delegate = self
@@ -55,7 +55,9 @@ class TemperatureViewController: UIViewController, UITableViewDelegate, UITableV
 			cell.displayDetails.addGestureRecognizer(tap)
 		}
 
+		cell.item = indexPath.item
 		if let temperaturesSet = temperatures {
+			
 			switch indexPath.item {
 			case 0:
 				cell.actualTemperature.text = "\((temperaturesSet[0].tool0!.actual)!)°C"

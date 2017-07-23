@@ -136,6 +136,66 @@ class Octoprint {
 		task.resume()
 	}
 	
+	func setTargetToolTemp(temps: ToolTemp, completion: @escaping OctoPrintResponse) {
+		
+		let url = URL(string: UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)!)
+		let apiKey = UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
+
+		var request = URLRequest(url: url!.appendingPathComponent("/api/printer/tool"))
+		
+		do {
+			let jsonData = try JSONSerialization.data(withJSONObject: temps.toJSON(), options: .prettyPrinted)
+			
+			request.addValue(apiKey!, forHTTPHeaderField: "X-Api-Key")
+			
+			request.httpMethod = "POST"
+			request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+			request.httpBody = jsonData
+			
+			let session = URLSession.shared
+			let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
+				DispatchQueue.main.async {
+					completion(data, error)
+				}
+			})
+			
+			task.resume()
+			
+		} catch {
+			
+		}
+	}
+	
+	func setTargetBedTemp(temps: BedTemp, completion: @escaping OctoPrintResponse) {
+		
+		let url = URL(string: UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)!)
+		let apiKey = UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
+		
+		var request = URLRequest(url: url!.appendingPathComponent("/api/printer/bed"))
+		
+		do {
+			let jsonData = try JSONSerialization.data(withJSONObject: temps.toJSON(), options: .prettyPrinted)
+			
+			request.addValue(apiKey!, forHTTPHeaderField: "X-Api-Key")
+			
+			request.httpMethod = "POST"
+			request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+			request.httpBody = jsonData
+			
+			let session = URLSession.shared
+			let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
+				DispatchQueue.main.async {
+					completion(data, error)
+				}
+			})
+			
+			task.resume()
+			
+		} catch {
+			
+		}
+	}
+	
 	func httpGetRequest(url: URL, completion : @escaping OctoPrintResponse) {
 		
 	}
