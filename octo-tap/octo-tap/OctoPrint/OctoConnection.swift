@@ -142,9 +142,7 @@ struct OctoFiles {
 						ref.download = download
 					}
 				}
-				
-				
-				
+
 				var filament = File.GCodeAnalysis.Filament(
 					length: nil,
 					volume: nil)
@@ -166,8 +164,6 @@ struct OctoFiles {
 					
 					gcodeAnalysis.estimatedPrintTime = jsonGcodeAnalysis["estimatedPrintTime"] as? Int
 				}
-				
-			
 				
 				var print = File.Print(failure: nil, success: nil, last: nil)
 				
@@ -225,9 +221,9 @@ struct OctoFiles {
 			}
 		}
 	
-	
-		free = json["free"] as! Int
-		
+		if let free = json["free"] as? Int {
+			self.free = free
+		}
 	}
 	
 	var files: Array<File>
@@ -275,6 +271,137 @@ struct OctoFiles {
 	}
 	
 }
+
+struct OctoWSFrame {
+	
+	init?(json: [String: Any]) {
+		
+		
+		if let jCurrent = json["current"] as? [String: Any] {
+			current = Current(temps: nil)
+			
+			var temps = [Temp]()
+
+			
+			if let jTemps = jCurrent["temps"] as? Array<[String: Any]> {
+				for jTemp in jTemps {
+					var temp = Temp(tool0: nil, tool1: nil, bed: nil, time: nil)
+					
+					var tool0 = Temp.Tool(actual: nil, target: nil)
+					if let jTool0 = jTemp["tool0"] as? [String: Any] {
+						
+						tool0.actual = jTool0["actual"] as? Float
+						tool0.target = jTool0["target"] as? Float
+						
+						temp.tool0 = tool0
+					}
+					
+					var tool1 = Temp.Tool(actual: nil, target: nil)
+					if let jTool1 = jTemp["tool1"] as? [String: Any] {
+						
+						tool1.actual = jTool1["actual"] as? Float
+						tool1.target = jTool1["target"] as? Float
+						
+						temp.tool1 = tool1
+					}
+					
+					var bed = Temp.Tool(actual: nil, target: nil)
+					if let jBed = jTemp["bed"] as? [String: Any] {
+						
+						bed.actual = jBed["actual"] as? Float
+						bed.target = jBed["target"] as? Float
+
+						temp.bed = bed
+					}
+					
+					if let time = jTemp["time"] as? Int64 {
+						temp.time = time;
+					}
+					
+					temps.append(temp)
+				}
+			}
+			
+			current?.temps = temps
+		}
+	}
+	
+	
+	var current: Current?
+	
+	struct Current {
+		
+		var temps: Array<Temp>?
+		
+
+	}
+	
+	struct Temp {
+		var tool0: Tool?
+		var tool1: Tool?
+		var bed: Tool?
+		var time: Int64?
+		
+		struct Tool {
+			var actual: Float?
+			var target: Float?
+			
+		}
+	}
+}
+
+//
+//"current":{
+//	"logs": ["Send: M105", "Recv: ok T:25.5 /0.0 B:24.4 /0.0 T0:25.5 /0.0 T1:39.0 /0.0 @:0 B@:0"],
+//	"offsets": {},
+//	"serverTime": 1500784190.188776,
+//	"busyFiles": [],
+//	"messages": ["ok T:25.5 /0.0 B:24.4 /0.0 T0:25.5 /0.0 T1:39.0 /0.0 @:0 B@:0"],
+//	"job": {
+//		"file": {"origin": "local", "path": "vna2.gcode", "date": 1500267303, "name": "vna2.gcode", "size": 1229879},
+//		"estimatedPrintTime": 1070.1013801327497,
+//		"averagePrintTime": 1755.2051520347595,
+//		"filament": {
+//			"tool0": {"volume": 8.729912310853965, "length": 3629.475779999869}},
+//			"lastPrintTime": 1307.442785024643
+//	},
+//		
+//	"temps": [{
+//		"tool0": {
+//			"actual": 25.5, "target": 0.0
+//		},
+//		"bed": {
+//			"actual": 24.4,
+//			"target": 0.0
+//		},
+//		"tool1": {
+//			"actual": 39.0,
+//			"target": 0.0
+//		},
+//		"time": 1500784190
+//	}],
+//	"state": {
+//		"text": "Operational",
+//		"flags": {
+//			"operational": true,
+//			"paused": false,
+//			"printing": false,
+//			"sdReady": true,
+//			"error": false,
+//			"ready": true,
+//			"closedOrError": false
+//		}
+//	},
+//	"currentZ": 62.7,
+//	"progress": {
+//		"completion": 100,
+//		"printTimeLeft": 0,
+//		"printTime": 1307,
+//		"filepos": 1229879
+//	}
+//}
+
+
 
 
 

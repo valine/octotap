@@ -31,6 +31,10 @@ class RootViewController: UITabBarController {
 					} else {
 						// SUCESS
 						UserDefaults.standard.set(keyString, forKey: Constants.Server.apiKey.rawValue)
+						
+						let octoprintWs = OctoWebSockets.instance
+						octoprintWs.openSocket(address: URL(string:serverAddress!)!)
+
 					}
 				})
 			} else {

@@ -48,9 +48,11 @@ class SetupViewController : UITableViewController, UITextFieldDelegate {
 					
 					UserDefaults.standard.set(keyString, forKey: Constants.Server.apiKey.rawValue)
 					self.serverAddressInput.resignFirstResponder()
+					
 					self.dismiss(animated: true, completion: nil)
 				}
 			})
+			
 		} else {
 			// BAD INPUT
 			serverAddressInput.textColor = Constants.Colors.errorRed

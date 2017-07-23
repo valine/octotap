@@ -16,6 +16,9 @@ class ToolCell: UITableViewCell {
 	@IBOutlet weak var extrudeButton: UIButton!
 	@IBOutlet weak var retractButton: UIButton!
 		
+	@IBOutlet weak var targetTemperature: UITextField!
+	@IBOutlet weak var actualTemperature: UILabel!
+	
 	@IBOutlet weak var toolNameLabel: UILabel!
 	@IBOutlet weak var currentTempLabel: UILabel!
 	override func awakeFromNib() {

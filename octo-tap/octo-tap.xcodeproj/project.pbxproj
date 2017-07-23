@@ -11,6 +11,7 @@
 		801855A41F21D87600B22859 /* SwiftWebSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 801855981F21D86600B22859 /* SwiftWebSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		801855A81F2266DC00B22859 /* OctoConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801855A71F2266DC00B22859 /* OctoConnection.swift */; };
 		808AA1C11F23D521000853C8 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808AA1C01F23D521000853C8 /* TemperatureViewController.swift */; };
+		808D26021F247B7E008555BC /* OctoWebSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808D26011F247B7E008555BC /* OctoWebSockets.swift */; };
 		80B140BA1F23E2DD00957006 /* ToolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B140B91F23E2DD00957006 /* ToolCell.swift */; };
 		80B140BC1F23F95D00957006 /* FilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B140BB1F23F95D00957006 /* FilesCell.swift */; };
 		80B838A81F1EEEC900F90A13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B838A71F1EEEC900F90A13 /* AppDelegate.swift */; };
@@ -98,6 +99,7 @@
 		8018558E1F21D86500B22859 /* SwiftWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftWebSocket.xcodeproj; path = ../SwiftWebSocket/SwiftWebSocket.xcodeproj; sourceTree = "<group>"; };
 		801855A71F2266DC00B22859 /* OctoConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctoConnection.swift; sourceTree = "<group>"; };
 		808AA1C01F23D521000853C8 /* TemperatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
+		808D26011F247B7E008555BC /* OctoWebSockets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctoWebSockets.swift; sourceTree = "<group>"; };
 		80B140B91F23E2DD00957006 /* ToolCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolCell.swift; sourceTree = "<group>"; };
 		80B140BB1F23F95D00957006 /* FilesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesCell.swift; sourceTree = "<group>"; };
 		80B838A41F1EEEC900F90A13 /* octo-tap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "octo-tap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +197,7 @@
 			children = (
 				80B838BB1F1EEF7500F90A13 /* Octoprint.swift */,
 				801855A71F2266DC00B22859 /* OctoConnection.swift */,
+				808D26011F247B7E008555BC /* OctoWebSockets.swift */,
 			);
 			path = OctoPrint;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				80B838BC1F1EEF7500F90A13 /* Octoprint.swift in Sources */,
 				80DF97791F21621400E254A5 /* String.swift in Sources */,
 				80B838EC1F1F08E200F90A13 /* Constants.swift in Sources */,
+				808D26021F247B7E008555BC /* OctoWebSockets.swift in Sources */,
 				80B838AC1F1EEEC900F90A13 /* FileBrowserViewController.swift in Sources */,
 				80B838A81F1EEEC900F90A13 /* AppDelegate.swift in Sources */,
 				80B838FE1F1FC08200F90A13 /* TextInpuCellTableViewCell.swift in Sources */,

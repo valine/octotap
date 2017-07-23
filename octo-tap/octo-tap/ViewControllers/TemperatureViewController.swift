@@ -12,15 +12,19 @@
 
 import UIKit
 
-class TemperatureViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TemperatureViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, OctoPrintDelegate {
 	
 	@IBOutlet weak var toolTableView: UITableView!
+	
+	var temperatures:Array<OctoWSFrame.Temp>?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		toolTableView.delegate = self
 		toolTableView.dataSource = self
-		toolTableView.separatorColor = Constants.Colors.almostBlack
+		
+		let octoprintWs = OctoWebSockets.instance
+		octoprintWs.delegate = self
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,7 +33,8 @@ class TemperatureViewController: UIViewController, UITableViewDelegate, UITableV
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 110;
+		let cellHeight: CGFloat = 118
+		return cellHeight;
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,7 +46,27 @@ class TemperatureViewController: UIViewController, UITableViewDelegate, UITableV
 		} else {
 			cell.toolNameLabel.text = "\(Constants.Strings.toolName) \(indexPath.item)"
 		}
+
+		if let temperaturesSet = temperatures {
+			switch indexPath.item {
+			case 0:
+				cell.actualTemperature.text = "\((temperaturesSet[0].tool0!.actual)!)°C"
+			case 1:
+				cell.actualTemperature.text = "\((temperaturesSet[0].tool1!.actual)!)°C"
+			case 2:
+				cell.actualTemperature.text = "\((temperaturesSet[0].bed!.actual)!)°C"
+			default:
+				print("error setting temp label")
+			}
+		}
+		
 		return cell
+	}
+	
+	func temperatureUpdate(temp: Array<OctoWSFrame.Temp>) {
+		temperatures = temp
+		toolTableView.reloadData()
+		
 	}
 	
 }

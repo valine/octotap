@@ -22,10 +22,7 @@ class FileBrowserViewController: UIViewController, UITableViewDataSource, UITabl
 		super.viewDidLoad()
 		filesTableView.delegate = self
 		filesTableView.dataSource = self
-		filesTableView.separatorColor = Constants.Colors.almostBlack
-		
-		
-		
+	
 		let apiKey = UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
 		let serverAddress = UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)
 		
@@ -35,8 +32,6 @@ class FileBrowserViewController: UIViewController, UITableViewDataSource, UITabl
 			self.files = files
 			self.filesTableView.reloadData()
 		})
-		
-		
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,15 +41,18 @@ class FileBrowserViewController: UIViewController, UITableViewDataSource, UITabl
 			return filesCount
 		}
 		
-		return 1
+		return 0
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 73;
+		let cellHeight: CGFloat = 73
+		return cellHeight;
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell:FilesCell = self.filesTableView.dequeueReusableCell(withIdentifier: Constants.TabelCellResuseIDs.filesCell.rawValue) as! FilesCell!
+		
+		cell.nameLabel.text = files?.files[indexPath.item].name
 	
 		return cell
 	}

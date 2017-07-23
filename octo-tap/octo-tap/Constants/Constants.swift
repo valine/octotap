@@ -56,6 +56,7 @@ struct Constants {
 		static let errorRed = #colorLiteral(red: 0.7681432424, green: 0.1994044624, blue: 0.192549982, alpha: 1)
 		static let almostBlack = #colorLiteral(red: 0.04440529638, green: 0.04926400222, blue: 0.05597636421, alpha: 1)
 		static let linkBlue = #colorLiteral(red: 0.3061920226, green: 0.4673921935, blue: 0.8344106916, alpha: 1)
+		static let ashGrey = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
 	}
 	
 	

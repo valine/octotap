@@ -18,6 +18,7 @@ class Octoprint {
 	typealias OctoPrintResponse = (Data?, Error?) -> Void
 	typealias StringResponse = (String?, Error?) -> Void
 	typealias FilesResponse = (OctoFiles?, Error?) -> Void
+	typealias TemperatureResponse = (Array<OctoWSFrame.Temp>?, Error?) -> Void
 	
 	func getUIApiKey(address: URL, completion : @escaping StringResponse) {
 		
@@ -45,6 +46,8 @@ class Octoprint {
 						if let successfulConnection = connection {
 							print((successfulConnection.connected.apikey))
 							completion((successfulConnection.connected.apikey), nil)
+							
+							socket.close()
 						}
 					}
 				} catch {
@@ -82,8 +85,7 @@ class Octoprint {
 						let files = OctoFiles(json: returnedJSON)
 							
 						if let parsedFiles = files {
-							print(parsedFiles.files[1].name)
-							
+
 							DispatchQueue.main.async(){
 								completion(parsedFiles, error)
 							}
@@ -106,23 +108,23 @@ class Octoprint {
 		
 	}
 	
-	func httpPostRequest(url: URL, data: Data, completion: @escaping OctoPrintResponse) {
-		var request = URLRequest(url: url)
-		
-		request.httpMethod = "POST"
-	 	request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-		request.httpBody = data
-		
-		let session = URLSession.shared
-		let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
-			DispatchQueue.main.async {
-				completion(data, error)
-			}
-		})
-		
-		task.resume()
-	}
-	
+//	func httpPostRequest(url: URL, data: Data, completion: @escaping OctoPrintResponse) {
+//		var request = URLRequest(url: url)
+//		
+//		request.httpMethod = "POST"
+//	 	request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//		request.httpBody = data
+//		
+//		let session = URLSession.shared
+//		let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
+//			DispatchQueue.main.async {
+//				completion(data, error)
+//			}
+//		})
+//		
+//		task.resume()
+//	}
+//	
 	func extrude() {
 	}
 	
