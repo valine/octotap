@@ -347,10 +347,11 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="graph-reference" translatesAutoresizingMaskIntoConstraints="NO" id="QdV-Ta-dI7">
-                                <rect key="frame" x="-15" y="498" width="429" height="185"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1VV-SX-njM" customClass="TemperatureChart" customModule="octo_tap" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="496" width="414" height="191"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.97647058819999999" green="0.14901960780000001" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -363,12 +364,13 @@
                     <tabBarItem key="tabBarItem" title="Temperature" image="second" id="5Ii-hs-akP"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="temperatureChart" destination="1VV-SX-njM" id="Ccv-2m-XWH"/>
                         <outlet property="toolTableView" destination="3hg-BO-fU3" id="g4l-i9-fdL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xiy-If-zsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="635" y="14"/>
+            <point key="canvasLocation" x="634.78260869565224" y="13.858695652173914"/>
         </scene>
         <!--Files-->
         <scene sceneID="Jlc-6B-Lom">
@@ -564,7 +566,6 @@
     <resources>
         <image name="details" width="32" height="10"/>
         <image name="first" width="30" height="30"/>
-        <image name="graph-reference" width="640" height="360"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>
