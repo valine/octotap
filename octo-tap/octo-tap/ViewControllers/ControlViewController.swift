@@ -28,6 +28,8 @@ class ControllerViewController: UIViewController {
 	@IBOutlet weak var downwardButton: UIButton!
 	@IBOutlet weak var homeZButton: UIButton!
 
+	@IBOutlet weak var fanOnButton: UIButton!
+	@IBOutlet weak var fanOffButton: UIButton!
 
 	var octoprint: Octoprint?
 	@IBOutlet weak var webcam: UIImageView!
@@ -44,6 +46,9 @@ class ControllerViewController: UIViewController {
 		upwardButton.layer.cornerRadius = upwardButton.frame.width / 2
 		downwardButton.layer.cornerRadius = downwardButton.frame.width / 2
 		homeZButton.layer.cornerRadius = homeZButton.frame.width / 2
+		
+		fanOffButton.layer.cornerRadius = 5
+		fanOnButton.layer.cornerRadius = 5
 		
 		webcam.layer.borderWidth = 1
 		webcam.layer.borderColor = Constants.Colors.ashGrey.cgColor

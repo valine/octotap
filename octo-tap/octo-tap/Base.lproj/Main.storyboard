@@ -632,6 +632,8 @@
                     <connections>
                         <outlet property="backButton" destination="SB6-I3-IbY" id="MUH-lh-Hoz"/>
                         <outlet property="downwardButton" destination="OpY-NG-Rag" id="SCK-aT-E91"/>
+                        <outlet property="fanOffButton" destination="zV5-5R-VCI" id="xDB-k2-XUM"/>
+                        <outlet property="fanOnButton" destination="niW-fT-cEe" id="78a-we-JFs"/>
                         <outlet property="forwardButton" destination="sGV-3w-c5U" id="M80-st-wp4"/>
                         <outlet property="homeXYButton" destination="vDI-1T-uZT" id="ng8-io-69d"/>
                         <outlet property="homeZButton" destination="erK-PY-4GS" id="MLl-to-A8Y"/>
