@@ -226,9 +226,50 @@ class Octoprint {
 		}
 	}
 	
-	func httpGetRequest(url: URL, completion : @escaping OctoPrintResponse) {
+	func fanOn() {
+		let url = URL(string: UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)!)
+		let apiKey = UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
+		var request = URLRequest(url: url!.appendingPathComponent("/api/printer/command"))
 		
+		do {
+			let jsonData = try JSONSerialization.data(withJSONObject: Fan().fanOnJSON(), options: .prettyPrinted)
+			
+			request.addValue(apiKey!, forHTTPHeaderField: "X-Api-Key")
+			
+			request.httpMethod = "POST"
+			request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+			request.httpBody = jsonData
+			
+			let session = URLSession.shared
+			let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
+			})
+			
+			task.resume()
+		} catch {}
 	}
+	
+	func fanOff() {
+		let url = URL(string: UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)!)
+		let apiKey = UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
+		var request = URLRequest(url: url!.appendingPathComponent("/api/printer/command"))
+		
+		do {
+			let jsonData = try JSONSerialization.data(withJSONObject: Fan().fanOffJSON(), options: .prettyPrinted)
+			
+			request.addValue(apiKey!, forHTTPHeaderField: "X-Api-Key")
+			
+			request.httpMethod = "POST"
+			request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+			request.httpBody = jsonData
+			
+			let session = URLSession.shared
+			let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
+			})
+			
+			task.resume()
+		} catch {}
+	}
+	
 	
 //	func httpPostRequest(url: URL, data: Data, completion: @escaping OctoPrintResponse) {
 //		var request = URLRequest(url: url)

@@ -585,6 +585,29 @@ struct Jog {
 	}
 }
 
+struct Fan {
+
+	func fanOnJSON() -> [String: Any] {
+		var json = [String: Any]()
+		
+		json["commands"] = ["M106 S255"]
+		
+		return json;
+	}
+	
+	func fanOffJSON() -> [String: Any] {
+		var json = [String: Any]()
+		
+		json["commands"] = ["M106 S0"]
+		
+		return json;
+	}
+
+
+}
+
+//{"commands":["M106 S0"],"parameters":{}}
+
 //POST /api/printer/printhead HTTP/1.1
 //Host: example.com
 //Content-Type: application/json

@@ -16,6 +16,8 @@ import MjpegStreamingKit
 
 class ControllerViewController: UIViewController {
 	
+	var jogDistance: Float = Float(0.1)
+	
 	@IBOutlet weak var forwardButton: UIButton!
 	@IBOutlet weak var backButton: UIButton!
 	@IBOutlet weak var leftButton: UIButton!
@@ -25,7 +27,8 @@ class ControllerViewController: UIViewController {
 	@IBOutlet weak var upwardButton: UIButton!
 	@IBOutlet weak var downwardButton: UIButton!
 	@IBOutlet weak var homeZButton: UIButton!
-	
+
+
 	var octoprint: Octoprint?
 	@IBOutlet weak var webcam: UIImageView!
 	override func viewDidLoad() {
@@ -56,28 +59,28 @@ class ControllerViewController: UIViewController {
 
 	}
 	@IBAction func forwardTapped(_ sender: Any) {
-		octoprint?.jogPrintHead(jog: Jog(command: "jog", x: nil, y: 7, z: nil), completion: {(data: Data?, error:Error?) in })
+		octoprint?.jogPrintHead(jog: Jog(command: "jog", x: nil, y: jogDistance, z: nil), completion: {(data: Data?, error:Error?) in })
 	}
 
 	@IBAction func backwardTapped(_ sender: Any) {
-		octoprint?.jogPrintHead(jog: Jog(command: "jog", x: nil, y: -7, z: nil), completion: {(data: Data?, error:Error?) in })
+		octoprint?.jogPrintHead(jog: Jog(command: "jog", x: nil, y: -jogDistance, z: nil), completion: {(data: Data?, error:Error?) in })
 	}
 	
 	@IBAction func leftTapped(_ sender: Any) {
-		octoprint?.jogPrintHead(jog: Jog(command: "jog", x: -7, y: nil, z: nil), completion: {(data: Data?, error:Error?) in })
+		octoprint?.jogPrintHead(jog: Jog(command: "jog", x: -jogDistance, y: nil, z: nil), completion: {(data: Data?, error:Error?) in })
 	}
 	
 	@IBAction func rightTapped(_ sender: Any) {
-		octoprint?.jogPrintHead(jog: Jog(command: "jog", x: 7, y: nil, z: nil), completion: {(data: Data?, error:Error?) in })
+		octoprint?.jogPrintHead(jog: Jog(command: "jog", x: jogDistance, y: nil, z: nil), completion: {(data: Data?, error:Error?) in })
 	}
 
 	
 	@IBAction func upTapped(_ sender: Any) {
-			octoprint?.jogPrintHead(jog: Jog(command: "jog", x: nil, y: nil, z: 7), completion: {(data: Data?, error:Error?) in })
+			octoprint?.jogPrintHead(jog: Jog(command: "jog", x: nil, y: nil, z: jogDistance), completion: {(data: Data?, error:Error?) in })
 	}
 
 	@IBAction func downTapped(_ sender: Any) {
-			octoprint?.jogPrintHead(jog: Jog(command: "jog", x: nil, y: nil, z: -7), completion: {(data: Data?, error:Error?) in })
+			octoprint?.jogPrintHead(jog: Jog(command: "jog", x: nil, y: nil, z: -jogDistance), completion: {(data: Data?, error:Error?) in })
 		
 	}
 	@IBAction func xyHomeTapped(_ sender: Any) {
@@ -85,5 +88,19 @@ class ControllerViewController: UIViewController {
 	
 	@IBOutlet weak var zHomeTapped: UIButton!
 	
+	@IBAction func fanOn(_ sender: Any) {
+		octoprint?.fanOn()
+	}
+
+	@IBAction func fanOff(_ sender: Any) {
+		octoprint?.fanOff()
+	}
+	
+	@IBAction func jogDistanceSet(_ sender: Any) {
+		
+		let control = sender as! UISegmentedControl
+		jogDistance = Float(control.titleForSegment(at: control.selectedSegmentIndex)!)!
+	}
+
 }
 

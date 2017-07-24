@@ -562,6 +562,9 @@
                                 <state key="normal" title="Fan Off">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="fanOff:" destination="9dO-Qh-Giv" eventType="touchUpInside" id="MM4-hU-9bo"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niW-fT-cEe">
                                 <rect key="frame" x="302" y="123" width="92" height="55"/>
@@ -571,7 +574,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="upTapped:" destination="9dO-Qh-Giv" eventType="touchUpInside" id="0jc-lu-s4W"/>
+                                    <action selector="fanOn:" destination="9dO-Qh-Giv" eventType="touchUpInside" id="w5f-8e-IL0"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="smD-SL-rm5">
@@ -588,6 +591,9 @@
                                     <segment title="100"/>
                                 </segments>
                                 <color key="tintColor" red="0.29796150326728821" green="0.29755279421806335" blue="0.32408756017684937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="jogDistanceSet:" destination="9dO-Qh-Giv" eventType="valueChanged" id="gjh-mn-knm"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="X/Y Jog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3h-ha-hyN">
                                 <rect key="frame" x="20" y="93" width="78" height="22"/>
