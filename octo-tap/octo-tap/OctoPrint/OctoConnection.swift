@@ -558,5 +558,42 @@ struct BedTemp {
 //	}
 //	}
 
+struct Jog {
+	var command: String?
+	var x: Float?
+	var y: Float?
+	var z: Float?
+	
+	func toJSON() -> [String: Any] {
+		var json = [String: Any]()
+		
+		if let unwrapped = command {
+			json["command"] = unwrapped
+		}
+		
+		if let xUnwrapped = x {
+			json["x"] = xUnwrapped
+		}
+		if let yUnwrapped = y {
+			json["y"] = yUnwrapped
+		}
+		if let zUnwrapped = z {
+			json["z"] = zUnwrapped
+		}
+		
+		return json
+	}
+}
 
+//POST /api/printer/printhead HTTP/1.1
+//Host: example.com
+//Content-Type: application/json
+//X-Api-Key: abcdef...
+//
+//{
+//	"command": "jog",
+//	"x": 10,
+//	"y": -5,
+//	"z": 0.02
+//}
 

@@ -26,8 +26,11 @@ class ControllerViewController: UIViewController {
 	@IBOutlet weak var downwardButton: UIButton!
 	@IBOutlet weak var homeZButton: UIButton!
 	
+	var octoprint: Octoprint?
 	@IBOutlet weak var webcam: UIImageView!
 	override func viewDidLoad() {
+		
+		octoprint = Octoprint()
 		
 		forwardButton.layer.cornerRadius = forwardButton.frame.width / 2
 		backButton.layer.cornerRadius = backButton.frame.width / 2
@@ -39,10 +42,11 @@ class ControllerViewController: UIViewController {
 		downwardButton.layer.cornerRadius = downwardButton.frame.width / 2
 		homeZButton.layer.cornerRadius = homeZButton.frame.width / 2
 		
-		let octoprint = Octoprint()
+		webcam.layer.borderWidth = 1
+		webcam.layer.borderColor = Constants.Colors.ashGrey.cgColor
 		let address = URL(string: UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)!)
 		let apikey =  UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
-		octoprint.getSettings(address: address!, apiKey: apikey!, completion: {(response: OctoSettings?, error: Error?) in
+		octoprint?.getSettings(address: address!, apiKey: apikey!, completion: {(response: OctoSettings?, error: Error?) in
 			let url = URL(string: (response?.webcam.streamUrl)!)
 			
 			let streamingController = MjpegStreamingController(imageView: self.webcam)
@@ -51,5 +55,35 @@ class ControllerViewController: UIViewController {
 		})
 
 	}
+	@IBAction func forwardTapped(_ sender: Any) {
+		octoprint?.jogPrintHead(jog: Jog(command: "jog", x: nil, y: 7, z: nil), completion: {(data: Data?, error:Error?) in })
+	}
+
+	@IBAction func backwardTapped(_ sender: Any) {
+		octoprint?.jogPrintHead(jog: Jog(command: "jog", x: nil, y: -7, z: nil), completion: {(data: Data?, error:Error?) in })
+	}
+	
+	@IBAction func leftTapped(_ sender: Any) {
+		octoprint?.jogPrintHead(jog: Jog(command: "jog", x: -7, y: nil, z: nil), completion: {(data: Data?, error:Error?) in })
+	}
+	
+	@IBAction func rightTapped(_ sender: Any) {
+		octoprint?.jogPrintHead(jog: Jog(command: "jog", x: 7, y: nil, z: nil), completion: {(data: Data?, error:Error?) in })
+	}
+
+	
+	@IBAction func upTapped(_ sender: Any) {
+			octoprint?.jogPrintHead(jog: Jog(command: "jog", x: nil, y: nil, z: 7), completion: {(data: Data?, error:Error?) in })
+	}
+
+	@IBAction func downTapped(_ sender: Any) {
+			octoprint?.jogPrintHead(jog: Jog(command: "jog", x: nil, y: nil, z: -7), completion: {(data: Data?, error:Error?) in })
+		
+	}
+	@IBAction func xyHomeTapped(_ sender: Any) {
+	}
+	
+	@IBOutlet weak var zHomeTapped: UIButton!
 	
 }
+

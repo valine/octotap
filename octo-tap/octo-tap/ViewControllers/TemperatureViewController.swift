@@ -20,7 +20,7 @@ class TemperatureViewController: UIViewController, UITableViewDelegate, UITableV
 	var temperatures:Array<OctoWSFrame.Temp>?
 	var cellsOpen =  Array(repeating: Constants.Dimensions.cellClosedHeight, count: 3)
 
-	@IBOutlet weak var temperatureChart: TemperatureChart!
+	//@IBOutlet weak var temperatureChart: TemperatureChart!
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		toolTableView.delegate = self
@@ -29,23 +29,23 @@ class TemperatureViewController: UIViewController, UITableViewDelegate, UITableV
 		let octoprintWs = OctoWebSockets.instance
 		octoprintWs.delegate = self
 		
-		let populationData :[Int : Double] = [
-			1990 : 123456.0,
-			2000 : 233456.0,
-			2010 : 343456.0
-		]
-		
-		let ySeries = populationData.map { x, y in
-			return ChartDataEntry(x: Double(x), y: y)
-		}
-		
-		let data = LineChartData()
-		let dataset = LineChartDataSet(values: ySeries, label: "Hello")
-		dataset.colors = [NSUIColor.red]
-		data.addDataSet(dataset)
-		
-		temperatureChart.data = data
-		
+//		let populationData :[Int : Double] = [
+//			1990 : 123456.0,
+//			2000 : 233456.0,
+//			2010 : 343456.0
+//		]
+//		
+//		let ySeries = populationData.map { x, y in
+//			return ChartDataEntry(x: Double(x), y: y)
+//		}
+//		
+//		let data = LineChartData()
+//		let dataset = LineChartDataSet(values: ySeries, label: "Hello")
+//		dataset.colors = [NSUIColor.red]
+//		data.addDataSet(dataset)
+//		
+//		temperatureChart.data = data
+//		
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
