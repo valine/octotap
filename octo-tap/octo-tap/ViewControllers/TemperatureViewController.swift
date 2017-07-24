@@ -11,6 +11,7 @@
 //  limitations under the License.
 
 import UIKit
+import Charts
 
 class TemperatureViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, OctoPrintDelegate {
 	
