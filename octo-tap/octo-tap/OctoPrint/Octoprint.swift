@@ -271,23 +271,95 @@ class Octoprint {
 	}
 	
 	
-//	func httpPostRequest(url: URL, data: Data, completion: @escaping OctoPrintResponse) {
-//		var request = URLRequest(url: url)
-//		
-//		request.httpMethod = "POST"
-//	 	request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//		request.httpBody = data
-//		
-//		let session = URLSession.shared
-//		let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
-//			DispatchQueue.main.async {
-//				completion(data, error)
-//			}
-//		})
-//		
-//		task.resume()
-//	}
-//	
+	func homeXY() {
+		let url = URL(string: UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)!)
+		let apiKey = UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
+		var request = URLRequest(url: url!.appendingPathComponent("/api/printer/printhead"))
+		
+		do {
+			let jsonData = try JSONSerialization.data(withJSONObject: Home().homeXToJson(), options: .prettyPrinted)
+			
+			request.addValue(apiKey!, forHTTPHeaderField: "X-Api-Key")
+			
+			request.httpMethod = "POST"
+			request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+			request.httpBody = jsonData
+			
+			let session = URLSession.shared
+			let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
+			})
+			
+			task.resume()
+		} catch {}
+	}
+	
+	func homeZ() {
+		let url = URL(string: UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)!)
+		let apiKey = UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
+		var request = URLRequest(url: url!.appendingPathComponent("/api/printer/printhead"))
+		
+		do {
+			let jsonData = try JSONSerialization.data(withJSONObject: Home().homeZToJson(), options: .prettyPrinted)
+			
+			request.addValue(apiKey!, forHTTPHeaderField: "X-Api-Key")
+			
+			request.httpMethod = "POST"
+			request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+			request.httpBody = jsonData
+			
+			let session = URLSession.shared
+			let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
+			})
+			
+			task.resume()
+		} catch {}
+	}
+	
+	func extrude(amount: Int, tool: Int) {
+		let url = URL(string: UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)!)
+		let apiKey = UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
+		
+		
+		var requestSelect = URLRequest(url: url!.appendingPathComponent("/api/printer/tool"))
+		do {
+			var json = [String: Any]()
+			json["tool"] = "tool\(tool)"
+			json["command"] = "select"
+			
+			let jsonData = try JSONSerialization.data(withJSONObject:json, options: .prettyPrinted)
+			
+			requestSelect.addValue(apiKey!, forHTTPHeaderField: "X-Api-Key")
+			
+			requestSelect.httpMethod = "POST"
+			requestSelect.setValue("application/json", forHTTPHeaderField: "Content-Type")
+			requestSelect.httpBody = jsonData
+			
+			let session = URLSession.shared
+			let task = session.dataTask(with: requestSelect, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
+				
+				var request = URLRequest(url: url!.appendingPathComponent("/api/printer/tool"))
+				do {
+					let extrude = Extrude(amount: amount, command: "extrude")
+					let jsonData = try JSONSerialization.data(withJSONObject: extrude.toJson(), options: .prettyPrinted)
+					
+					request.addValue(apiKey!, forHTTPHeaderField: "X-Api-Key")
+					
+					request.httpMethod = "POST"
+					request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+					request.httpBody = jsonData
+					
+					let session = URLSession.shared
+					let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
+					})
+					
+					task.resume()
+				} catch {}
+			})
+			
+			task.resume()
+		} catch {}
+	}
+	
 	func extrude() {
 	}
 	

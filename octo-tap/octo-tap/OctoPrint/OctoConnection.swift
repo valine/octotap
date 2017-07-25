@@ -47,8 +47,6 @@ struct OctoConnection {
 		} else {
 			return nil
 		}
-
-
 	}
 	
 	struct Connected {
@@ -64,7 +62,6 @@ struct OctoConnection {
 	
 	var connected: Connected
 }
-
 
 //	{
 //	"files": [
@@ -330,10 +327,7 @@ struct OctoWSFrame {
 	var current: Current?
 	
 	struct Current {
-		
 		var temps: Array<Temp>?
-		
-
 	}
 	
 	struct Temp {
@@ -345,7 +339,6 @@ struct OctoWSFrame {
 		struct Tool {
 			var actual: Float?
 			var target: Float?
-			
 		}
 	}
 }
@@ -541,9 +534,6 @@ struct BedTemp {
 	}
 }
 
-
-
-
 //
 //	POST /api/printer/tool HTTP/1.1
 //	Host: example.com
@@ -604,6 +594,65 @@ struct Fan {
 	}
 
 
+}
+
+//		POST /api/printer/printhead HTTP/1.1
+//		Host: example.com
+//		Content-Type: application/json
+//		X-Api-Key: abcdef...
+//
+//		{
+//			"command": "home",
+//			"axes": ["x", "y"]
+//		}
+
+struct Home {
+	
+	func homeXToJson() -> [String: Any] {
+		var json = [String: Any]()
+		json["command"] = "home"
+		json["axes"] = ["x", "y"]
+		
+		return json
+	}
+	
+	func homeZToJson() -> [String: Any] {
+		var json = [String: Any]()
+		json["command"] = "home"
+		json["axes"] = ["z"]
+		
+		return json
+	}
+	
+}
+
+struct Extrude {
+	
+	var amount: Int?
+	var command: String?
+	
+	
+	func toJson() -> [String: Any] {
+		var json = [String: Any]()
+		json["command"] = command
+		
+		if let unwrapped = amount {
+			json["amount"] = unwrapped
+		}
+		
+		return json
+	}
+//	
+//	POST /api/printer/tool HTTP/1.1
+//	Host: example.com
+//	Content-Type: application/json
+//	X-Api-Key: abcdef...
+//	
+//	{
+//	"command": "extrude",
+//	"amount": 5
+//	}
+	
 }
 
 //{"commands":["M106 S0"],"parameters":{}}

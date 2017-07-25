@@ -157,5 +157,16 @@ class ToolCell: UITableViewCell {
 		self.targetTemperature.text = ""
 		self.targetTemperature.resignFirstResponder()
 	}
+	
+	@IBAction func extrudeTapped(_ sender: Any) {
+		
+		let octoprint = Octoprint()
+		octoprint.extrude(amount: 5, tool: item!)
+	}
+	
+	@IBAction func retractTapped(_ sender: Any) {
+		let octoprint = Octoprint()
+		octoprint.extrude(amount: -5, tool: item!)
+	}
 
 }

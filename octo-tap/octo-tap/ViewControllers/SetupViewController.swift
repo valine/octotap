@@ -14,9 +14,10 @@ import UIKit
 
 class SetupViewController : UITableViewController, UITextFieldDelegate {
 	
-	@IBOutlet weak var serverAddressStatus: UILabel!
 	@IBOutlet weak var serverAddressInput: UITextField!
 	
+	// @IBOutlet weak var serverAddressSection: UITableViewSection!
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		serverAddressInput.delegate = self
@@ -38,13 +39,13 @@ class SetupViewController : UITableViewController, UITextFieldDelegate {
 				if (error != nil) {
 					// BAD CONNECTION
 					self.serverAddressInput.textColor =  Constants.Colors.errorRed
-					self.serverAddressStatus.textColor = Constants.Colors.errorRed
-					self.serverAddressStatus.text = Constants.Strings.badConnections
+					//self.serverAddressSection.textColor = Constants.Colors.errorRed
+					//self.serverAddressStatus.text = Constants.Strings.badConnections
 				} else {
 					// SUCESS
 					self.serverAddressInput.textColor = Constants.Colors.octotapGreen
-					self.serverAddressStatus.textColor = Constants.Colors.octotapGreen
-					self.serverAddressStatus.text = Constants.Strings.successful
+					//self.serverAddressStatus.textColor = Constants.Colors.octotapGreen
+					//self.serverAddressStatus.text = Constants.Strings.successful
 					
 					UserDefaults.standard.set(keyString, forKey: Constants.Server.apiKey.rawValue)
 					self.serverAddressInput.resignFirstResponder()
@@ -59,8 +60,8 @@ class SetupViewController : UITableViewController, UITextFieldDelegate {
 		} else {
 			// BAD INPUT
 			serverAddressInput.textColor = Constants.Colors.errorRed
-			serverAddressStatus.textColor = Constants.Colors.errorRed
-			serverAddressStatus.text = Constants.Strings.invalidURL
+			//serverAddressStatus.textColor = Constants.Colors.errorRed
+			//serverAddressStatus.text = Constants.Strings.invalidURL
 		}
 	}
 	
