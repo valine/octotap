@@ -27,6 +27,8 @@ class ToolCell: UITableViewCell {
 	@IBOutlet weak var displayMoreDots: UIImageView!
 	@IBOutlet weak var toolNameLabel: UILabel!
 	@IBOutlet weak var currentTempLabel: UILabel!
+
+	@IBOutlet weak var extrudeDistance: UISegmentedControl!
 	override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -58,14 +60,15 @@ class ToolCell: UITableViewCell {
 		
 		let cancel: UIBarButtonItem  = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelButtonAction))
 		cancel.tintColor = Constants.Colors.errorRed
-		let off: UIBarButtonItem   = UIBarButtonItem(title: "Off", style: UIBarButtonItemStyle.plain, target: self, action: #selector(offButtonAction))
+		let off: UIBarButtonItem   = UIBarButtonItem(title: "Off", style: UIBarButtonItemStyle.done, target: self, action: #selector(offButtonAction))
 		off.tintColor = .lightGray
 		
 		let flexSpace              = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
 		
 		let space                  = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
-		space.width = 20
+		space.width = 35
 		let done: UIBarButtonItem  = UIBarButtonItem(title: "Apply", style: UIBarButtonItemStyle.done, target: self, action: #selector(doneButtonAction))
+		done.tintColor = Constants.Colors.linkBlue
 		
 		var items = [UIBarButtonItem]()
 		items.append(cancel)
@@ -159,14 +162,19 @@ class ToolCell: UITableViewCell {
 	}
 	
 	@IBAction func extrudeTapped(_ sender: Any) {
-		
+		let extrudeAmountIndex = extrudeDistance.selectedSegmentIndex
+		let extrudeAmount = Constants.Dimensions.extrusionAmounts[extrudeAmountIndex]
 		let octoprint = Octoprint()
-		octoprint.extrude(amount: 5, tool: item!)
+		octoprint.extrude(amount: Int(extrudeAmount), tool: item!)
 	}
 	
 	@IBAction func retractTapped(_ sender: Any) {
+		
+		let extrudeAmountIndex = extrudeDistance.selectedSegmentIndex
+		let extrudeAmount = Constants.Dimensions.extrusionAmounts[extrudeAmountIndex]
 		let octoprint = Octoprint()
-		octoprint.extrude(amount: -5, tool: item!)
+		octoprint.extrude(amount: Int(-extrudeAmount), tool: item!)
+
 	}
 
 }

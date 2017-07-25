@@ -16,7 +16,7 @@ import MjpegStreamingKit
 
 class ControllerViewController: UIViewController {
 	
-	var jogDistance: Float = Float(0.1)
+	var jogDistance: Float = Float(1)
 	
 	@IBOutlet weak var forwardButton: UIButton!
 	@IBOutlet weak var backButton: UIButton!
@@ -35,7 +35,6 @@ class ControllerViewController: UIViewController {
 	var streamingUrl: URL?
 	
 	var streamingController: MjpegStreamingController?
-	
 	
 
 	var octoprint: Octoprint?

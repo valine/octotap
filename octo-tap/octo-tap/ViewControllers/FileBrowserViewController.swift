@@ -60,7 +60,7 @@ class FileBrowserViewController: UIViewController, UITableViewDataSource, UITabl
 			if success {
 				cell.nameLabel.textColor = Constants.Colors.octotapGreen
 			} else {
-				cell.nameLabel.textColor = Constants.Colors.errorRed
+				cell.nameLabel.textColor = Constants.Colors.happyRed
 			}
 		} else {
 			cell.nameLabel.textColor = .white

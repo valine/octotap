@@ -53,16 +53,19 @@ struct Constants {
 	}
 	
 	struct Colors {
-		static let octotapGreen = #colorLiteral(red: 0.4328771306, green: 0.7475412437, blue: 0.5101899934, alpha: 1)
+		static let octotapGreen = #colorLiteral(red: 0.3019312121, green: 0.9805322289, blue: 0.03547518271, alpha: 1)
 		static let errorRed = #colorLiteral(red: 0.9805322289, green: 0.4494236022, blue: 0.4543004445, alpha: 1)
-		static let almostBlack = #colorLiteral(red: 0.03166640236, green: 0.03166640236, blue: 0.03166640236, alpha: 1)
-		static let linkBlue = #colorLiteral(red: 0.3061920226, green: 0.4673921935, blue: 0.8344106916, alpha: 1)
+		static let happyRed = #colorLiteral(red: 1, green: 0, blue: 0.2552101016, alpha: 1)
+		static let linkBlue = #colorLiteral(red: 0.120020397, green: 0.5770391822, blue: 0.9824696183, alpha: 1)
 		static let ashGrey = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+		static let almostBlack = #colorLiteral(red: 0.03166640236, green: 0.03166640236, blue: 0.03166640236, alpha: 1)
 	}
 	
 	struct Dimensions {
 		static let cellClosedHeight: CGFloat = 135
-		static let cellOpenHeight: CGFloat = 220
+		static let cellOpenHeight: CGFloat = 230
+		
+		static let extrusionAmounts: Array<Float> = [2, 5, 10, 30]
 	}
 	
 	
