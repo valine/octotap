@@ -1,3 +1,4 @@
+
 {
   "images" : [
     {
@@ -57,7 +58,7 @@
     {
       "size" : "20x20",
       "idiom" : "ipad",
-      "filename" : "20@2x-1.png",
+      "filename" : "20@2x.png",
       "scale" : "2x"
     },
     {
@@ -69,7 +70,7 @@
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "29@2x-1.png",
+      "filename" : "29@2x.png",
       "scale" : "2x"
     },
     {
@@ -81,7 +82,7 @@
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "40@2x-1.png",
+      "filename" : "40@2x.png",
       "scale" : "2x"
     },
     {
@@ -113,3 +114,4 @@
     "author" : "xcode"
   }
 }
+
