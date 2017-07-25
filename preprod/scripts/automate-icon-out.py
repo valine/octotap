@@ -118,6 +118,7 @@ json = """
     "version" : 1,
     "author" : "xcode"
   }
+}
 
 """
 
