@@ -31,6 +31,7 @@ class ControllerViewController: UIViewController {
 	@IBOutlet weak var fanOnButton: UIButton!
 	@IBOutlet weak var fanOffButton: UIButton!
 	
+	@IBOutlet weak var motorsOffButton: UIButton!
 	var streamingUrl: URL?
 	
 	var streamingController: MjpegStreamingController?
@@ -55,6 +56,7 @@ class ControllerViewController: UIViewController {
 		
 		fanOffButton.layer.cornerRadius = 5
 		fanOnButton.layer.cornerRadius = 5
+		motorsOffButton.layer.cornerRadius = 5
 		
 		webcam.layer.borderWidth = 1
 		webcam.layer.borderColor = Constants.Colors.ashGrey.cgColor
@@ -75,6 +77,10 @@ class ControllerViewController: UIViewController {
 		if let unwrappedURL = self.streamingUrl {
 			self.streamingController?.play(url:unwrappedURL)
 		}
+	}
+	
+	override func viewDidDisappear(_ animated: Bool) {
+		streamingController?.stop()
 	}
 	
 	@IBAction func forwardTapped(_ sender: Any) {
@@ -120,6 +126,9 @@ class ControllerViewController: UIViewController {
 		octoprint?.fanOff()
 	}
 	
+	@IBAction func motorsOff(_ sender: Any) {
+		octoprint?.motorsOff()
+	}
 	@IBAction func jogDistanceSet(_ sender: Any) {
 		
 		let control = sender as! UISegmentedControl

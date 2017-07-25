@@ -315,6 +315,33 @@ class Octoprint {
 		} catch {}
 	}
 	
+	func motorsOff() {
+		let url = URL(string: UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)!)
+		let apiKey = UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
+		var request = URLRequest(url: url!.appendingPathComponent("/api/printer/command"))
+		
+		do {
+			var json = [String: Any]()
+			json["commands"] = ["M18"]
+			
+			let jsonData = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+			
+			request.addValue(apiKey!, forHTTPHeaderField: "X-Api-Key")
+			
+			request.httpMethod = "POST"
+			request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+			request.httpBody = jsonData
+			
+			let session = URLSession.shared
+			let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
+			})
+			
+			task.resume()
+		} catch {}
+	}
+	
+	//{"commands":["M18"],"parameters":{}}
+	
 	func extrude(amount: Int, tool: Int) {
 		let url = URL(string: UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)!)
 		let apiKey = UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
