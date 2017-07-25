@@ -149,7 +149,7 @@
 		808D26011F247B7E008555BC /* OctoWebSockets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctoWebSockets.swift; sourceTree = "<group>"; };
 		80B140B91F23E2DD00957006 /* ToolCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolCell.swift; sourceTree = "<group>"; };
 		80B140BB1F23F95D00957006 /* FilesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesCell.swift; sourceTree = "<group>"; };
-		80B838A41F1EEEC900F90A13 /* octo-tap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "octo-tap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		80B838A41F1EEEC900F90A13 /* octotap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = octotap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80B838A71F1EEEC900F90A13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80B838AB1F1EEEC900F90A13 /* FileBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBrowserViewController.swift; sourceTree = "<group>"; };
 		80B838AE1F1EEEC900F90A13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 		80B838A51F1EEEC900F90A13 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				80B838A41F1EEEC900F90A13 /* octo-tap.app */,
+				80B838A41F1EEEC900F90A13 /* octotap.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -300,9 +300,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		80B838A31F1EEEC900F90A13 /* octo-tap */ = {
+		80B838A31F1EEEC900F90A13 /* octotap */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 80B838B81F1EEEC900F90A13 /* Build configuration list for PBXNativeTarget "octo-tap" */;
+			buildConfigurationList = 80B838B81F1EEEC900F90A13 /* Build configuration list for PBXNativeTarget "octotap" */;
 			buildPhases = (
 				80B838A01F1EEEC900F90A13 /* Sources */,
 				80B838A11F1EEEC900F90A13 /* Frameworks */,
@@ -316,9 +316,9 @@
 				8012AE9E1F25432800FB5F68 /* PBXTargetDependency */,
 				8012AEB51F257CD300FB5F68 /* PBXTargetDependency */,
 			);
-			name = "octo-tap";
+			name = octotap;
 			productName = "octo-tap";
-			productReference = 80B838A41F1EEEC900F90A13 /* octo-tap.app */;
+			productReference = 80B838A41F1EEEC900F90A13 /* octotap.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -339,7 +339,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 80B8389F1F1EEEC900F90A13 /* Build configuration list for PBXProject "octo-tap" */;
+			buildConfigurationList = 80B8389F1F1EEEC900F90A13 /* Build configuration list for PBXProject "octotap" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -366,7 +366,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				80B838A31F1EEEC900F90A13 /* octo-tap */,
+				80B838A31F1EEEC900F90A13 /* octotap */,
 			);
 		};
 /* End PBXProject section */
@@ -653,7 +653,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		80B8389F1F1EEEC900F90A13 /* Build configuration list for PBXProject "octo-tap" */ = {
+		80B8389F1F1EEEC900F90A13 /* Build configuration list for PBXProject "octotap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				80B838B61F1EEEC900F90A13 /* Debug */,
@@ -662,7 +662,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		80B838B81F1EEEC900F90A13 /* Build configuration list for PBXNativeTarget "octo-tap" */ = {
+		80B838B81F1EEEC900F90A13 /* Build configuration list for PBXNativeTarget "octotap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				80B838B91F1EEEC900F90A13 /* Debug */,
