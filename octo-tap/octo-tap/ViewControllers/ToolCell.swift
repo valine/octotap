@@ -32,6 +32,7 @@ class ToolCell: UITableViewCell {
 	override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+
 		extrudeButton.layer.cornerRadius = extrudeButton.frame.width / 2
 		retractButton.layer.cornerRadius = extrudeButton.frame.width / 2
 		

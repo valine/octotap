@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if (isFirstLaunch) {
 			UserDefaults.standard.set(false, forKey: Constants.App.firstLaunch.rawValue)
 		}
+		
+		UIApplication.shared.statusBarStyle = .lightContent
 
 		return true
 	}

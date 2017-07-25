@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "80B838A31F1EEEC900F90A13"
-               BuildableName = "octotap.app"
-               BlueprintName = "octotap"
-               ReferencedContainer = "container:octotap.xcodeproj">
+               BuildableName = "octo-tap.app"
+               BlueprintName = "octo-tap"
+               ReferencedContainer = "container:octo-tap.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "80B838A31F1EEEC900F90A13"
-            BuildableName = "octotap.app"
-            BlueprintName = "octotap"
-            ReferencedContainer = "container:octotap.xcodeproj">
+            BuildableName = "octo-tap.app"
+            BlueprintName = "octo-tap"
+            ReferencedContainer = "container:octo-tap.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "80B838A31F1EEEC900F90A13"
-            BuildableName = "octotap.app"
-            BlueprintName = "octotap"
-            ReferencedContainer = "container:octotap.xcodeproj">
+            BuildableName = "octo-tap.app"
+            BlueprintName = "octo-tap"
+            ReferencedContainer = "container:octo-tap.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "80B838A31F1EEEC900F90A13"
-            BuildableName = "octotap.app"
-            BlueprintName = "octotap"
-            ReferencedContainer = "container:octotap.xcodeproj">
+            BuildableName = "octo-tap.app"
+            BlueprintName = "octo-tap"
+            ReferencedContainer = "container:octo-tap.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

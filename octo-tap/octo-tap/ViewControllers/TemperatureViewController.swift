@@ -18,7 +18,7 @@ class TemperatureViewController: UIViewController, UITableViewDelegate, UITableV
 	@IBOutlet weak var toolTableView: UITableView!
 
 	var temperatures:Array<OctoWSFrame.Temp>?
-	var cellsOpen =  Array(repeating: Constants.Dimensions.cellClosedHeight, count: 3)
+	var cellsOpen =  Array(repeating: true, count: 3)
 
 	//@IBOutlet weak var temperatureChart: TemperatureChart!
 	override func viewDidLoad() {
@@ -54,11 +54,12 @@ class TemperatureViewController: UIViewController, UITableViewDelegate, UITableV
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		var cellHeight: CGFloat = 118
 
-		cellHeight = cellsOpen[indexPath.item]
-		
-		return cellHeight;
+		if cellsOpen[indexPath.item]{
+			return Constants.Dimensions.cellClosedHeight
+		} else {
+			return Constants.Dimensions.cellOpenHeight
+		}
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -98,15 +99,10 @@ class TemperatureViewController: UIViewController, UITableViewDelegate, UITableV
 		let tag = gesture.view?.tag
 		if  gesture.state == .ended {
 			
-			let expandedHeight: CGFloat = Constants.Dimensions.cellOpenHeight
+			cellsOpen[tag!] = !cellsOpen[tag!]
+			
+			
 			toolTableView.beginUpdates()
-			
-			if cellsOpen[tag!] == expandedHeight {
-				cellsOpen[tag!] = Constants.Dimensions.cellClosedHeight
-			} else {
-				cellsOpen[tag!] = Constants.Dimensions.cellOpenHeight
-			}
-			
 			toolTableView.endUpdates()
 		}
 	}
