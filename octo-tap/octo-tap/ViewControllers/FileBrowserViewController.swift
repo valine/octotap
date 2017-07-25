@@ -16,24 +16,56 @@ class FileBrowserViewController: UIViewController, UITableViewDataSource, UITabl
 	
 	@IBOutlet weak var filesTableView: UITableView!
 	
+	var files: OctoFiles?
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		filesTableView.delegate = self
 		filesTableView.dataSource = self
-		filesTableView.separatorColor = Constants.Colors.almostBlack
+	
+		let apiKey = UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
+		let serverAddress = UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)
+		
+		let octoPrint = Octoprint()
+		
+		octoPrint.getFiles(address: URL(string: (serverAddress?.withHttp())!)!, apiKey: apiKey!, completion: {(files: OctoFiles?, error: Error?) -> Void in
+			self.files = files
+			self.filesTableView.reloadData()
+		})
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		//TODO pull number of tools
-		return 3
+		
+		if let filesCount  =  (files?.files.count) {
+			return filesCount
+		}
+		
+		return 0
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 73;
+		let cellHeight: CGFloat = 73
+		return cellHeight;
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell:FilesCell = self.filesTableView.dequeueReusableCell(withIdentifier: Constants.TabelCellResuseIDs.filesCell.rawValue) as! FilesCell!
+		
+		let file = files?.files[indexPath.item]
+		cell.nameLabel.text = file?.name
+		
+		
+		if let success = file?.print?.last?.success {
+			if success {
+				cell.nameLabel.textColor = Constants.Colors.octotapGreen
+			} else {
+				cell.nameLabel.textColor = Constants.Colors.happyRed
+			}
+		} else {
+			cell.nameLabel.textColor = .white
+		}
+		
 	
 		return cell
 	}

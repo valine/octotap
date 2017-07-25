@@ -11,16 +11,41 @@
 //  limitations under the License.
 
 import UIKit
+import Charts
 
-class TemperatureViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TemperatureViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, OctoPrintDelegate {
 	
 	@IBOutlet weak var toolTableView: UITableView!
-	
+
+	var temperatures:Array<OctoWSFrame.Temp>?
+	var cellsOpen =  Array(repeating: true, count: 3)
+
+	//@IBOutlet weak var temperatureChart: TemperatureChart!
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		toolTableView.delegate = self
 		toolTableView.dataSource = self
-		toolTableView.separatorColor = Constants.Colors.almostBlack
+		
+		let octoprintWs = OctoWebSockets.instance
+		octoprintWs.delegate = self
+		
+//		let populationData :[Int : Double] = [
+//			1990 : 123456.0,
+//			2000 : 233456.0,
+//			2010 : 343456.0
+//		]
+//		
+//		let ySeries = populationData.map { x, y in
+//			return ChartDataEntry(x: Double(x), y: y)
+//		}
+//		
+//		let data = LineChartData()
+//		let dataset = LineChartDataSet(values: ySeries, label: "Hello")
+//		dataset.colors = [NSUIColor.red]
+//		data.addDataSet(dataset)
+//		
+//		temperatureChart.data = data
+//		
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,7 +54,12 @@ class TemperatureViewController: UIViewController, UITableViewDelegate, UITableV
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 110;
+
+		if cellsOpen[indexPath.item]{
+			return Constants.Dimensions.cellClosedHeight
+		} else {
+			return Constants.Dimensions.cellOpenHeight
+		}
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -40,8 +70,86 @@ class TemperatureViewController: UIViewController, UITableViewDelegate, UITableV
 			cell.toolNameLabel.text = Constants.Strings.bedToolName
 		} else {
 			cell.toolNameLabel.text = "\(Constants.Strings.toolName) \(indexPath.item)"
+			let tap = UILongPressGestureRecognizer(target: self, action: #selector(tapHandler))
+			tap.minimumPressDuration = 0
+			cell.displayDetails.tag = indexPath.item
+			cell.displayDetails.addGestureRecognizer(tap)
 		}
+
+		cell.item = indexPath.item
+		if let temperaturesSet = temperatures {
+			
+			switch indexPath.item {
+			case 0:
+				cell.actualTemperature.text = "\((temperaturesSet[0].tool0!.actual)!)°C"
+			case 1:
+				cell.actualTemperature.text = "\((temperaturesSet[0].tool1!.actual)!)°C"
+			case 2:
+				cell.actualTemperature.text = "\((temperaturesSet[0].bed!.actual)!)°C"
+			default:
+				print("error setting temp label")
+			}
+		}
+		
 		return cell
+	}
+	
+	func tapHandler(gesture: UITapGestureRecognizer) {
+		
+		let tag = gesture.view?.tag
+		if  gesture.state == .ended {
+			
+			cellsOpen[tag!] = !cellsOpen[tag!]
+			
+			
+			toolTableView.beginUpdates()
+			toolTableView.endUpdates()
+		}
+	}
+	
+	func refresh() {
+		
+		if let temperaturesSet = temperatures {
+			
+			if let tool0 = toolTableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? ToolCell {
+				
+				tool0.actualTemperature.text = "\((temperaturesSet[0].tool0!.actual)!)°C"
+				
+				if (temperaturesSet[0].tool0!.target)! == 0 {
+					tool0.targetTemperature.placeholder = "Off"
+				} else {
+					tool0.targetTemperature.placeholder = "\((temperaturesSet[0].tool0!.target)!)°C"
+				}
+			}
+			
+			if let tool1 = toolTableView.cellForRow(at: IndexPath(item: 1, section: 0)) as? ToolCell {
+				tool1.actualTemperature.text = "\((temperaturesSet[0].tool1!.actual)!)°C"
+				
+				if (temperaturesSet[0].tool1!.target)! == 0 {
+					tool1.targetTemperature.placeholder = "Off"
+				} else {
+					tool1.targetTemperature.placeholder = "\((temperaturesSet[0].tool1!.target)!)°C"
+				}
+
+			}
+			
+			if let bed = toolTableView.cellForRow(at: IndexPath(item: 2, section: 0)) as? ToolCell {
+				bed.actualTemperature.text = "\((temperaturesSet[0].bed!.actual)!)°C"
+				
+				
+				if (temperaturesSet[0].bed!.target)! == 0 {
+					bed.targetTemperature.placeholder = "Off"
+				} else {
+					bed.targetTemperature.placeholder = "\((temperaturesSet[0].bed!.target)!)°C"
+				}
+			}
+		}
+	}
+
+	func temperatureUpdate(temp: Array<OctoWSFrame.Temp>) {
+		temperatures = temp
+		refresh()
+		
 	}
 	
 }

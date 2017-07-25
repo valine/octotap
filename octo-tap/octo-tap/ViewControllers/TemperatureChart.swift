@@ -10,23 +10,13 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import UIKit
+import Charts
 
-class FilesCell: UITableViewCell {
 
-	@IBOutlet weak var printButton: UIButton!
-	@IBOutlet weak var dateLabel: UILabel!
-	@IBOutlet weak var nameLabel: UILabel!
-     override func awakeFromNib() {
-		super.awakeFromNib()
+class TemperatureChart: LineChartView {
 	
-		printButton.layer.cornerRadius = printButton.frame.width / 2
-     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+	
+	
+	
+	
 }
