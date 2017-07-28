@@ -23,6 +23,8 @@ class Octoprint {
 	typealias FilesResponse = (OctoFiles?, Error?) -> Void
 	typealias TemperatureResponse = (Array<OctoWSFrame.Temp>?, Error?) -> Void
 	
+	var session: URLSession?
+	
 	func getUIApiKey(address: URL, completion : @escaping StringResponse) {
 		
 		let url = "\(address.absoluteString.webSocketAddr())/sockjs/websocket"
@@ -74,6 +76,36 @@ class Octoprint {
 //				}
 //			}
 		}
+	}
+	
+	func login(completion : @escaping OctoPrintResponse) {
+		let url = URL(string: UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)!)
+		let apiKey = UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
+		var request = URLRequest(url: url!.appendingPathComponent("/api/login"))
+		
+		do {
+			var json = [String: Any]()
+			json["commands"] = ["M18"]
+			
+			json["user"] = "valine"
+			json["pass"] = "Firstcontact"
+			json["remember"] = true
+
+			let jsonData = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+			
+			request.addValue(apiKey!, forHTTPHeaderField: "X-Api-Key")
+			
+			request.httpMethod = "POST"
+			request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+			request.httpBody = jsonData
+			
+			let session = URLSession.shared
+			let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
+			})
+			
+			task.resume()
+		} catch {}
+		
 	}
 	
 	func getFiles(address: URL, apiKey: String, completion : @escaping FilesResponse) {

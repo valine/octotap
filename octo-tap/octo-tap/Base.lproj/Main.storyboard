@@ -217,7 +217,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JVT-1E-R1k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1784" y="14"/>
+            <point key="canvasLocation" x="-1872" y="14"/>
         </scene>
         <!--Temperature-->
         <scene sceneID="eyc-XC-hJ6">
@@ -559,7 +559,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zV5-5R-VCI">
                                 <rect key="frame" x="302" y="185" width="92" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.29612768919999999" green="0.29742228739999998" blue="0.32538864210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.3279487009" green="0.34108187130000001" blue="0.34920247399999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Fan Off">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -787,7 +787,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tuz-3R-5eL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="686.95652173913049" y="751.63043478260875"/>
+            <point key="canvasLocation" x="596" y="752"/>
         </scene>
         <!--App Settings-->
         <scene sceneID="L4N-Dh-3DN">
@@ -818,7 +818,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wel-ch-bzD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1571" y="752"/>
+            <point key="canvasLocation" x="1445" y="752"/>
         </scene>
         <!--More-->
         <scene sceneID="dK7-LN-xaW">
@@ -945,7 +945,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GOk-u2-VUB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="687" y="1509"/>
+            <point key="canvasLocation" x="596" y="1502"/>
         </scene>
     </scenes>
     <resources>

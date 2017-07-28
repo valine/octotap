@@ -33,6 +33,9 @@ class RootViewController: UITabBarController {
 					} else {
 						// SUCESS
 						UserDefaults.standard.set(keyString, forKey: Constants.Server.apiKey.rawValue)
+						octoprint.login(completion:  {(response: Data?, error : Error?) -> Void in
+							
+						})
 					}
 				})
 			} else {
@@ -40,6 +43,8 @@ class RootViewController: UITabBarController {
 				self.showSetup()
 			}
 		}
+		
+
 		
 	}
 	
