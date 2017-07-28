@@ -18,6 +18,8 @@ class SetupViewController : UITableViewController, UITextFieldDelegate {
 	
 	@IBOutlet weak var serverAddressInput: UITextField!
 	
+	@IBOutlet weak var userNameInput: UITextField!
+	@IBOutlet weak var passwordInput: UITextField!
 	// @IBOutlet weak var serverAddressSection: UITableViewSection!
 
 	override func viewDidLoad() {
@@ -49,13 +51,30 @@ class SetupViewController : UITableViewController, UITextFieldDelegate {
 					//self.serverAddressStatus.textColor = Constants.Colors.octotapGreen
 					//self.serverAddressStatus.text = Constants.Strings.successful
 					
+					
 					UserDefaults.standard.set(keyString, forKey: Constants.Server.apiKey.rawValue)
 					self.serverAddressInput.resignFirstResponder()
 					
-					let octoprintWs = OctoWebSockets.instance
-					octoprintWs.openSocket(address: validURL)
-
-					self.dismiss(animated: true, completion: nil)
+					if (self.userNameInput.text != nil && self.passwordInput.text != nil) {
+						octoprint.login(user: self.userNameInput.text!, pass: self.passwordInput.text!, completion: {(data: Data?, error: Error?) -> Void in
+							print(self.userNameInput.text!)
+							
+							let jsonString = String(data: data!, encoding: .utf8)
+							
+							if jsonString == "User unknown or password incorrect" {
+								self.userNameInput.textColor = Constants.Colors.errorRed
+								self.passwordInput.textColor = Constants.Colors.errorRed
+							} else {
+								let octoprintWs = OctoWebSockets.instance
+								octoprintWs.openSocket(address: validURL)
+								self.dismiss(animated: true, completion: nil)
+							}
+						})
+					} else {
+						let octoprintWs = OctoWebSockets.instance
+						octoprintWs.openSocket(address: validURL)
+						self.dismiss(animated: true, completion: nil)
+					}
 				}
 			})
 			

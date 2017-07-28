@@ -78,6 +78,39 @@ class Octoprint {
 		}
 	}
 	
+	func login(user: String, pass: String, completion : @escaping OctoPrintResponse) {
+		let url = URL(string: UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)!)
+		let apiKey = UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
+		var request = URLRequest(url: url!.appendingPathComponent("/api/login"))
+		
+		do {
+			var json = [String: Any]()
+			json["commands"] = ["M18"]
+			
+			json["user"] = user
+			json["pass"] = pass
+			json["remember"] = true
+
+			let jsonData = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+			
+			request.addValue(apiKey!, forHTTPHeaderField: "X-Api-Key")
+			
+			request.httpMethod = "POST"
+			request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+			request.httpBody = jsonData
+			
+			let session = URLSession.shared
+			let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error : Error?) -> Void in
+				DispatchQueue.main.async() {
+					completion(data, error)
+				}
+			})
+			
+			task.resume()
+		} catch {}
+		
+	}
+	
 	func login(completion : @escaping OctoPrintResponse) {
 		let url = URL(string: UserDefaults.standard.string(forKey: Constants.Server.address.rawValue)!)
 		let apiKey = UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
@@ -87,10 +120,8 @@ class Octoprint {
 			var json = [String: Any]()
 			json["commands"] = ["M18"]
 			
-			json["user"] = "valine"
-			json["pass"] = "Firstcontact"
-			json["remember"] = true
-
+			json["passive"] = true
+			
 			let jsonData = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
 			
 			request.addValue(apiKey!, forHTTPHeaderField: "X-Api-Key")
@@ -107,6 +138,8 @@ class Octoprint {
 		} catch {}
 		
 	}
+	
+	
 	
 	func getFiles(address: URL, apiKey: String, completion : @escaping FilesResponse) {
 		var request = URLRequest(url: address.appendingPathComponent("api/files"))

@@ -164,7 +164,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="passwordInput" destination="E12-a6-a5t" id="tf8-cn-uP9"/>
                         <outlet property="serverAddressInput" destination="cSk-od-o4k" id="lWd-mI-iwy"/>
+                        <outlet property="userNameInput" destination="pip-8B-WGV" id="Veg-FJ-bau"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WAE-K8-lQd" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -34,7 +34,9 @@ class RootViewController: UITabBarController {
 						// SUCESS
 						UserDefaults.standard.set(keyString, forKey: Constants.Server.apiKey.rawValue)
 						octoprint.login(completion:  {(response: Data?, error : Error?) -> Void in
-							
+							if error == nil {
+								self.showSetup()
+							}
 						})
 					}
 				})
@@ -43,9 +45,6 @@ class RootViewController: UITabBarController {
 				self.showSetup()
 			}
 		}
-		
-
-		
 	}
 	
 	func showSetup() {
