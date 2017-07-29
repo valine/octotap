@@ -454,10 +454,7 @@ class Octoprint {
 		} catch {}
 	}
 	
-	func extrude() {
-	}
+
 	
-	func retract() {
-	}
 	
 }

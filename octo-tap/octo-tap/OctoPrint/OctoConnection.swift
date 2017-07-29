@@ -119,6 +119,38 @@ struct OctoConnection {
 //	}
 //
 
+struct PrinterConnection {
+	
+//	{
+//	"current": {
+//	"state": "Operational",
+//	"port": "/dev/ttyACM0",
+//	"baudrate": 250000,
+//	"printerProfile": "_default"
+//	},
+//	"options": {
+//	"ports": ["/dev/ttyACM0", "VIRTUAL"],
+//	"baudrates": [250000, 230400, 115200, 57600, 38400, 19200, 9600],
+//	"printerProfiles": [{"name": "Default", id: "_default"}],
+//	"portPreference": "/dev/ttyACM0",
+//	"baudratePreference": 250000,
+//	"printerProfilePreference": "_default",
+//	"autoconnect": true
+//	}
+//	}
+	
+	
+	struct Current {
+		
+		
+	}
+	
+	struct options {
+		
+		
+	}
+}
+
 struct OctoFiles {
 	
 	init?(json: [String: Any]) {
