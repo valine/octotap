@@ -25,22 +25,18 @@ class ControllerViewController: UIViewController {
 	@IBOutlet weak var leftButton: UIButton!
 	@IBOutlet weak var rightButton: UIButton!
 	@IBOutlet weak var homeXYButton: UIButton!
-	
 	@IBOutlet weak var upwardButton: UIButton!
 	@IBOutlet weak var downwardButton: UIButton!
-
 	@IBOutlet weak var homeZButton: UIButton!
 	@IBOutlet weak var fanOnButton: UIButton!
 	@IBOutlet weak var fanOffButton: UIButton!
 	
 	@IBOutlet weak var motorsOffButton: UIButton!
 	var streamingUrl: URL?
-	
 	var streamingController: MjpegStreamingController?
-	
-
 	var octoprint: Octoprint?
 	@IBOutlet weak var webcam: UIImageView!
+	
 	override func viewDidLoad() {
 		
 		octoprint = Octoprint()
@@ -65,10 +61,10 @@ class ControllerViewController: UIViewController {
 		let apikey =  UserDefaults.standard.string(forKey: Constants.Server.apiKey.rawValue)
 		octoprint?.getSettings(address: address!, apiKey: apikey!, completion: {(response: OctoSettings?, error: Error?) in
 			self.streamingUrl = URL(string: (response?.webcam.streamUrl)!)!
-			
 			self.streamingController = MjpegStreamingController(imageView: self.webcam)
+			
 			self.streamingController?.play(url: self.streamingUrl!)
-		
+			self.streamingController?.imageView.contentMode = UIViewContentMode.scaleAspectFit
 		})
 
 	}
@@ -111,7 +107,6 @@ class ControllerViewController: UIViewController {
 	}
 	
 	@IBAction func xyHomeTapped(_ sender: Any) {
-		
 		octoprint?.homeXY()
 	}
 	
@@ -131,7 +126,6 @@ class ControllerViewController: UIViewController {
 		octoprint?.motorsOff()
 	}
 	@IBAction func jogDistanceSet(_ sender: Any) {
-		
 		let control = sender as! UISegmentedControl
 		jogDistance = Float(control.titleForSegment(at: control.selectedSegmentIndex)!)!
 	}
