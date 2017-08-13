@@ -9,7 +9,7 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F1A28CAC-DC27-4E3E-80B7-DFEF02AD5F1D",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "AA30E5B2985184F41DCDBC2293BF9F1D6C19EDC0" : "octo-tap\/",
+    "AA30E5B2985184F41DCDBC2293BF9F1D6C19EDC0" : "octotap\/",
     "9025163822AAEA7A2D8AC9210D0874A56F62B462" : "octo-tap\/Charts\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "octo-tap",
